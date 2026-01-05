@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Galaxy</title>
+    <link rel="shortcut icon" href="./galaxy.png" type="image/x-icon">
+    <link rel="stylesheet" href="./galaxy.css">
+    
+    <!-- Load Three.js from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.min.js"></script>
+    <!-- Load OrbitControls -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.161.0/examples/js/controls/OrbitControls.min.js"></script>
+</head>
+<body>
+    <div id="container"></div>
+    <div class="'stats" id="stats">
+        <div>Systems:Active</div>
+        <div>Resonance:Stable</div>
+        <div>Phase:Nominal</div>
+    </div>
+    <div class="controls">
+        <button class="cntrl-bttn" id="reset-view">
+            <span></span><span></span><span></span><span></span><span>Reset View</span>
+        </button>
+        <button class="cntrl-bttn activate-bttn" id="activate-trigger">
+            <span></span><span></span><span></span><span></span><span>Activate Resonance</span>
+        </button>
+        <div>
+            <button class="cntrl-bttn" id="time-accel">
+                <span></span><span></span><span></span><span></span><span>Time: 1x</span>
+            </button>
+            <button class="cntrl-bttn" id="toggle-theme">
+            <span></span><span></span><span></span><span></span><span>Theme: Inferno</span>
+            </button>
+        </div>
+    </div>
+    <script type="module" src="./galaxy.js">
+
+    </script>
+    <script id="starVertexShader" type="x-shader/x-vertex">
+        varying vec3 vPosition;
+        varying vec3 vNormal;
+        varying vec2 vUV;
+        void main(){
+            vPosition =position;
+            vNormal=normal;
+            vUV=uv;
+            g1_position=projectionMatrix*modelViewMatrix*vec4(position,1.0);
+        }
+    </script>
+
+    <script id="starFragmentShader" type="x-shader/x-fragment">
+        uniform float time;
+        uniform float intensity;
+        uniform vec3 color1;
+        uniform vec3 color2;
+    </script>
+</body>
+</html>

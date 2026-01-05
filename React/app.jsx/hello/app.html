@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="js_container"></div>
+
+    <!-- <script src="https://unpkg.com/supersimpledev@3.2.1/external-library.js"></script> -->
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <!-- <script src="./app.js"></script> -->
+
+    <script type="text/babel">
+       const button = <button>hello</button>;
+       const paragraph = <p>paragraph of text </p>;
+       const div=(
+       <div>
+            <button>hello</button>
+            <p>paragraph of text {2+2} </p>
+       </div>
+       );
+       const para =(
+        <div>
+        <p>Cotton socks</p>
+        <p>price: $10</p>
+        <button>Add to Card</button>
+        </div>
+       )
+       const productCost=10+8*2
+       console.log(productCost)
+
+       const pdcost=<p>Product Cost: ${productCost}</p>
+        console.log(pdcost)
+
+        
+
+        const container=document.querySelector('.js_container')
+        ReactDOM.createRoot(container).render(pdcost)
+    </script>
+</body>
+</html>

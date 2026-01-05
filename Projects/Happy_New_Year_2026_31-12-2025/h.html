@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy New Year 2026</title>
+<style>
+body {
+    margin:0;
+    background:linear-gradient(to top,#060606,#000);
+    overflow:hidden;
+    text-align:center;
+    font-family:'Trebuchet MS', Arial, sans-serif;
+    color:white;
+}
+h1 {
+    margin-top:20px;
+    font-size:58px;
+    color:gold;
+    letter-spacing:4px;
+}
+#year {
+    font-size:160px;
+    margin-top:70px;
+    font-weight:900;
+    color:deepskyblue;
+    transition:1s;
+}
+#timer {
+    font-size:48px;
+    color:lightgreen;
+    margin-top:10px;
+}
+#quote {
+    display:none;
+    margin-top:35px;
+    font-size:30px;
+    width:80%;
+    margin-left:auto;
+    margin-right:auto;
+    color:#ffddaa;
+    line-height:1.6;
+    text-shadow:0 0 8px #ffddaa,0 0 20px #ffcc66;
+}
+#fun2025,#fun2026 {
+    margin-top:40px;
+    font-size:28px;
+    width:80%;
+    margin-left:auto;
+    margin-right:auto;
+    color:#ccc;
+}
+#fun2026 { display:none; }
+footer {
+    position:fixed;
+    bottom:0;
+    width:100%;
+    font-size:20px;
+    color:lightpink;
+    background: rgba(0,0,0,0.4);
+    padding:10px 0;
+}
+canvas { position:fixed; top:0; left:0; z-index:-1; }
+</style>
+</head>
+<body>
+
+<h1>🎆 Countdown to New Beginnings 🎆</h1>
+<div id="year">2025</div>
+<div id="timer">⏳ 10</div>
+
+<div id="fun2025">Dear 2025,<br>Thanks for the memories, lessons,<br>and a little bit of stress 😄</div>
+<div id="fun2026">Dear 2026,<br>Please bring happiness, success,<br>good health, and fewer exams! ✨😄</div>
+
+<div id="quote">
+A new year means a new beginning.<br>
+New hopes, new dreams, and new opportunities.<br>
+Let us leave behind the past and step into 2026 with positivity, kindness, and confidence.
+</div>
+
+<footer>🚀 New Year • New Dreams • New Energy 🚀</footer>
+
+<canvas id="canvas"></canvas>
+
+<script>
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+/* Countdown */
+let timeLeft = 10;
+const timerEl = document.getElementById("timer");
+const yearEl = document.getElementById("year");
+const fun2025 = document.getElementById("fun2025");
+const fun2026 = document.getElementById("fun2026");
+const quoteEl = document.getElementById("quote");
+
+const countdown = setInterval(()=>{
+    timeLeft--;
+    timerEl.innerText = "⏳ "+timeLeft;
+    if(timeLeft<=0){
+        clearInterval(countdown);
+        timerEl.style.display="none";
+        yearEl.innerText="2026";
+        yearEl.style.color="gold";
+        fun2025.style.display="none";
+        fun2026.style.display="block";
+        quoteEl.style.display="block";
+
+        setTimeout(()=>{
+            quoteEl.style.display="none";
+            startFireworkLetters(["HAPPY","NEW YEAR","2026"]);
+        },3000);
+    }
+},1000);
+
+/* Background fireworks */
+let fireworks=[];
+class Firework{
+    constructor(x,y){
+        this.x=x; this.y=y; this.life=60;
+        this.particles=[];
+        for(let i=0;i<50;i++){
+            this.particles.push({
+                x:this.x, y:this.y,
+                dx:(Math.random()-0.5)*8,
+                dy:(Math.random()-0.5)*8,
+                color:`hsl(${Math.random()*360},100%,70%)`,
+                size:2+Math.random()*2,
+                life:30+Math.random()*30
+            });
+        }
+    }
+    update(){ this.particles.forEach(p=>{p.x+=p.dx; p.y+=p.dy; p.life--;}); this.life--; }
+    draw(){ this.particles.forEach(p=>{ ctx.fillStyle=p.color; ctx.beginPath(); ctx.arc(p.x,p.y,p.size,0,Math.PI*2); ctx.fill(); }); }
+}
+
+/* Letter-shaped fireworks */
+let lettersParticles=[],explosions=[],words=[],currentWordIndex=0,wordComplete=false,fadeAlpha=1;
+
+function createParticlesForWord(word){
+    lettersParticles=[]; explosions=[]; wordComplete=false; fadeAlpha=1;
+    const offCanvas=document.createElement("canvas");
+    offCanvas.width=canvas.width; offCanvas.height=canvas.height;
+    const offCtx=offCanvas.getContext("2d");
+    offCtx.font="bold 150px Arial";
+    offCtx.fillStyle="white";
+    const textWidth=offCtx.measureText(word).width;
+    offCtx.fillText(word,canvas.width/2 - textWidth/2,canvas.height/2);
+    const imgData=offCtx.getImageData(0,0,canvas.width,canvas.height);
+    for(let y=0;y<canvas.height;y+=12){
+        for(let x=0;x<canvas.width;x+=12){
+            const idx=(y*canvas.width + x)*4;
+            if(imgData.data[idx+3]>128){
+                lettersParticles.push({
+                    x:Math.random()*canvas.width,
+                    y:canvas.height+Math.random()*50,
+                    targetX:x,targetY:y,
+                    color:`hsla(${Math.random()*360},100%,70%,0.8)`,
+                    size:2+Math.random()*2,
+                    speed:0.02+Math.random()*0.02,
+                    exploded:false
+                });
+            }
+        }
+    }
+}
+
+function explodeParticle(p){
+    const count=15+Math.random()*10;
+    for(let i=0;i<count;i++){
+        explosions.push({
+            x:p.x, y:p.y,
+            dx:(Math.random()-0.5)*4,
+            dy:(Math.random()-0.5)*4,
+            color:`hsla(${Math.random()*360},100%,70%,0.8)`,
+            life:20+Math.random()*20,
+            size:2+Math.random()*2
+        });
+    }
+}
+
+function startFireworkLetters(wordArray){
+    words=wordArray;
+    currentWordIndex=0;
+    createParticlesForWord(words[currentWordIndex]);
+}
+
+function animate(){
+    ctx.fillStyle="rgba(0,0,0,0.2)";
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+
+    // background fireworks
+    if(Math.random()<0.05) fireworks.push(new Firework(Math.random()*canvas.width,Math.random()*canvas.height/2));
+    fireworks.forEach((f,i)=>{f.draw(); f.update(); if(f.life<=0) fireworks.splice(i,1);});
+
+    // letter particles
+    let done=true;
+    lettersParticles.forEach(p=>{
+        if(!p.exploded){
+            p.x+=(p.targetX-p.x)*p.speed;
+            p.y+=(p.targetY-p.y)*p.speed;
+            if(Math.abs(p.x-p.targetX)<2 && Math.abs(p.y-p.targetY)<2){
+                p.exploded=true;
+                explodeParticle(p);
+            } else done=false;
+            ctx.fillStyle=p.color;
+            ctx.beginPath();
+            ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+            ctx.fill();
+        }
+    });
+
+    explosions.forEach((e,i)=>{
+        ctx.fillStyle=e.color;
+        ctx.beginPath();
+        ctx.arc(e.x,e.y,e.size,0,Math.PI*2);
+        ctx.fill();
+        e.x+=e.dx; e.y+=e.dy; e.life--;
+        if(e.life<=0) explosions.splice(i,1);
+    });
+
+    // fade letters after few seconds
+    if(done && explosions.length===0 && !wordComplete){
+        wordComplete=true;
+        setTimeout(()=>{
+            let fadeInterval=setInterval(()=>{
+                fadeAlpha-=0.01;
+                lettersParticles.forEach(p=>{p.color=p.color.replace(/[\d\.]+\)$/,'0.8)')}); 
+                if(fadeAlpha<=0){ clearInterval(fadeInterval); lettersParticles=[]; if(currentWordIndex<words.length-1){currentWordIndex++; createParticlesForWord(words[currentWordIndex]); wordComplete=false;} }
+            },50);
+        },2000); // show each word for 2 sec
+    }
+
+    requestAnimationFrame(animate);
+}
+animate();
+</script>
+</body>
+</html>
