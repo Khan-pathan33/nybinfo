@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./hello.css">
+     <style>
+    p.internal {
+      color: blue;
+      font-style: italic;
+    }
+    /* Internal CSS */
+p.internal { color: blue; }
+.box { background-color: yellow; padding: 10px; margin: 15px; }
+div > p { color: red; } /* direct child */
+div p { font-weight: bold; } /* descendant */
+h1, h2 { text-align: center; } /* group selector */
+  </style>
+</head>
+<body>
+    <p style="color: red; font-weight: bold;">This text is styled using inline CSS.</p>
+    <p class="internal">This text is styled using internal CSS.</p>
+    <p class="external">This text is styled using external CSS.</p>
+
+    <div style="background-color: lightblue; padding: 20px; margin: 30px;">
+    Padding adds space inside the box; Margin adds space outside.
+</div>
+
+<h1>Group Selector Example</h1>
+<h2>All h1 and h2 are centered</h2>
+
+<p style="color: green;">Inline CSS example</p>
+<p class="internal">Internal CSS example</p>
+
+<div class="box">
+  <p>Direct child of div → red text</p>
+  <div>
+    <p>Nested p inside div → bold text</p>
+  </div>
+</div>
+
+</body>
+</html>

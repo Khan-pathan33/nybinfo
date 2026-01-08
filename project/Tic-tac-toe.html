@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./Tic-tac-toe.css">
+</head>
+<body>
+  
+<!-- HOME -->
+<div id="home" class="screen active">
+  <h1>TIC TAC TOE</h1>
+  <button onclick="startGame('pvp')">New Game PvP</button>
+  <button onclick="startGame('ai')">User vs AI</button>
+</div>
+
+<!-- GAME -->
+<div id="game" class="screen">
+  <h2 id="turn">X TURN</h2>
+  <div style="position:relative">
+    <svg width="400" height="400">
+      <line id="strike" stroke="lime" stroke-width="8" stroke-linecap="round"/>
+    </svg>
+    <div class="board" id="board"></div>
+  </div>
+</div>
+
+<!-- WIN -->
+<div id="win" class="screen">
+  <h1 id="winnerText"></h1>
+  <h3>Congratulations 🎉</h3>
+</div>
+
+<!-- LEVEL MAP -->
+<div id="levels" class="screen">
+  <h1>LEVEL MAP</h1>
+  <div id="levelBtns"></div>
+</div>
+
+<script src="./Tic-tac-toe.js">
+</script>
+</body>
+</html>

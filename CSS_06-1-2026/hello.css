@@ -1,0 +1,19 @@
+p.external {
+    color: green;
+    text-decoration: underline;
+}
+p {
+  color: purple;
+}
+#unique {
+  border: 2px solid black;
+}
+h1, h2, h3 {
+  color: darkorange;
+}
+div > p {
+  color: red;
+}
+div p {
+  font-weight: bold;
+}
