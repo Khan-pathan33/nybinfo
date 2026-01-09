@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<link rel="stylesheet" href="https://unpkg.com/@vscode/codicons/dist/codicon.css">
+
+
+
+</head>
+<body>
+<!-- <div class="activity-bar">
+  <div class="icon active" data-panel="explorer">
+    <i class="codicon codicon-files"></i>
+  </div>
+  <div class="icon" data-panel="search">
+    <i class="codicon codicon-search"></i>
+  </div>
+  <div class="icon" data-panel="git">
+    <i class="codicon codicon-source-control"></i>
+  </div>
+  <div class="icon" data-panel="debug">
+    <i class="codicon codicon-debug"></i>
+  </div>
+  <div class="icon" data-panel="extensions">
+    <i class="codicon codicon-extensions"></i>
+  </div>
+</div> -->
+
+
+<div class="app">
+
+  <!-- Activity Bar -->
+  <div class="activity-bar">
+    <div class="icon active" data-panel="explorer" title="Explorer">
+      <i class="codicon codicon-files"></i>
+    </div>
+    <div class="icon" data-panel="search" title="Search">
+      <i class="codicon codicon-search"></i>
+    </div>
+    <div class="icon" data-panel="git" title="Source Control">
+      <i class="codicon codicon-source-control"></i>
+    </div>
+    <div class="icon" data-panel="debug" title="Run & Debug">
+      <i class="codicon codicon-debug"></i>
+    </div>
+    <div class="icon" data-panel="extensions" title="Extensions">
+      <i class="codicon codicon-extensions"></i>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar open">
+    <div class="panel active" id="explorer">
+      <h3>EXPLORER</h3>
+      <p>file1.html</p>
+      <p>file2.css</p>
+    </div>
+
+    <div class="panel" id="search">
+      <h3>SEARCH</h3>
+      <input placeholder="Search..." />
+    </div>
+
+    <div class="panel" id="git">
+      <h3>SOURCE CONTROL</h3>
+      <p>No changes</p>
+    </div>
+
+    <div class="panel" id="debug">
+      <h3>RUN & DEBUG</h3>
+      <button>Start Debugging</button>
+    </div>
+
+    <div class="panel" id="extensions">
+      <h3>EXTENSIONS</h3>
+      <p>Installed Extensions</p>
+    </div>
+  </div>
+
+  <!-- Main Editor -->
+  <div class="editor">
+    Main Editor Area
+  </div>
+
+</div>
+
+
+<script src="./icon.js"></script>
+
+</body>
+</html>

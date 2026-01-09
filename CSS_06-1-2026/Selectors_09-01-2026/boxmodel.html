@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Box Model: Content vs Border Box</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .boxes {
+    display: flex;
+    gap: 50px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .box-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h2 {
+    margin-bottom: 20px;
+  }
+
+  /* Outer margin */
+  .margin {
+    background-color: #95a5a6; /* gray */
+    padding: 30px; 
+    position: relative;
+    cursor: pointer;
+  }
+
+  /* Border */
+  .border {
+    background-color: #3498db; /* blue */
+    border: 5px solid #2980b9;
+    padding: 20px;
+    position: relative;
+    cursor: pointer;
+  }
+
+  /* Padding */
+  .padding {
+    background-color: #e67e22; /* orange */
+    padding: 20px;
+    position: relative;
+    cursor: pointer;
+  }
+
+  /* Content */
+  .content {
+    background-color: #f1c40f; /* yellow */
+    width: 200px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    position: relative;
+    cursor: pointer;
+  }
+
+  /* Border-box content */
+  .content-border-box {
+    box-sizing: border-box;
+    background-color: #f39c12; /* dark yellow */
+  }
+
+  /* Inner box */
+  .inner-box {
+    width: 80px;
+    height: 50px;
+    background-color: #9b59b6; /* purple */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  /* Labels */
+  .label {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+    pointer-events: none;
+  }
+
+  .margin .label { color: #7f8c8d; }
+  .border .label { color: #2980b9; }
+  .padding .label { color: #e67e22; }
+  .content .label { color: #f1c40f; }
+
+  /* Message box */
+  #message {
+    margin-top: 40px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    color: #2c3e50;
+  }
+
+  /* Differences highlight */
+  .difference {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #c0392b;
+    text-align: center;
+    max-width: 400px;
+  }
+
+</style>
+</head>
+<body>
+
+<h1>Interactive Box Model: Content vs Border Box</h1>
+
+<div class="boxes">
+
+  <!-- Content-box -->
+  <div class="box-container">
+    <h2>Content Box</h2>
+    <div class="margin" data-info="Margin: Space outside the border">
+      <div class="label">Margin</div>
+      <div class="border" data-info="Border: Wraps padding and content, visible edge of the box">
+        <div class="label">Border</div>
+        <div class="padding" data-info="Padding: Space inside border, around content">
+          <div class="label">Padding</div>
+          <div class="content" data-info="Content: Actual content. Width = content only in content-box">
+            <div class="label">Content</div>
+            <div class="inner-box">Inner</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="difference">
+      <strong>Note:</strong> In content-box, <em>width/height applies to content only</em>. Padding and border increase total size.
+    </div>
+  </div>
+
+  <!-- Border-box -->
+  <div class="box-container">
+    <h2>Border Box</h2>
+    <div class="margin" data-info="Margin: Space outside the border">
+      <div class="label">Margin</div>
+      <div class="border" data-info="Border: Wraps padding and content, visible edge of the box">
+        <div class="label">Border</div>
+        <div class="padding" data-info="Padding: Space inside border, around content">
+          <div class="label">Padding</div>
+          <div class="content content-border-box" data-info="Content: Actual content. Width includes padding and border in border-box">
+            <div class="label">Content</div>
+            <div class="inner-box">Inner</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="difference">
+      <strong>Note:</strong> In border-box, <em>width/height includes content + padding + border</em>. Total size stays fixed.
+    </div>
+  </div>
+
+</div>
+
+<div id="message">Click on any box layer to see its description</div>
+
+<script>
+  // Select all interactive elements
+  const elements = document.querySelectorAll('.margin, .border, .padding, .content');
+
+  elements.forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.stopPropagation(); // prevents parent layers from also firing
+      const info = el.getAttribute('data-info');
+      const messageDiv = document.getElementById('message');
+      messageDiv.textContent = info;
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+body {
+  margin: 0;
+  background: #1e1e1e;
+  font-family: Arial, sans-serif;
+  color: #ddd;
+}
+
+.app {
+  display: flex;
+  height: 100vh;
+}
+
+/* Activity bar */
+.activity-bar {
+  width: 48px;
+  background: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon {
+  height: 48px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c5c5c5;
+  cursor: pointer;
+  position: relative;
+}
+
+.icon:hover,
+.icon.active {
+  color: white;
+}
+
+.icon.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: #007acc;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 0;
+  background: #252526;
+  overflow: hidden;
+  transition: width 0.25s ease;
+}
+
+.sidebar.open {
+  width: 260px;
+}
+
+.panel {
+  display: none;
+  padding: 10px;
+}
+
+.panel.active {
+  display: block;
+}
+
+/* Editor */
+.editor {
+  flex: 1;
+  padding: 20px;
+  background: #1e1e1e;
+}
