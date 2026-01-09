@@ -1,0 +1,24 @@
+/* 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Floating animation */
+@keyframes float { 0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)} }
+.animate-float{animation:float 3s ease-in-out infinite}
+
+/* Reveal animation */
+@keyframes reveal { from{opacity:0;transform:scale(0.9)} to{opacity:1;transform:scale(1)} }
+.animate-reveal{animation:reveal 0.35s ease-out}
+
+/* Background movement */
+@keyframes bgMove {0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.bg-move{background-size:400% 400%;animation:bgMove 10s ease infinite}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Optional dark mode */
+body {
+  @apply transition-colors duration-500;
+}

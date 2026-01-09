@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Colorful Creative Text Examples</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    padding: 20px;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #ddd;
+    margin-bottom: 20px;
+    transition: all 0.3s;
+  }
+
+  .box:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+
+  /* 1. Simple color */
+  .text-color {
+    color: #FF5733; /* bright orange */
+    font-size: 20px;
+  }
+
+  /* 2. Background color */
+  .text-background {
+    color: #2E4053; /* dark blue text */
+    background-color: #F7DC6F; /* golden yellow background */
+    padding: 5px 10px;
+    display: inline-block;
+    font-size: 20px;
+  }
+
+  /* 3. First letter color */
+  .first-letter::first-letter {
+    color: #9B59B6; /* purple first letter */
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  /* 4. Hover color */
+  .hover-color {
+    color: #16A085; /* teal */
+    font-size: 20px;
+    transition: color 0.3s;
+  }
+  .hover-color:hover {
+    color: #F39C12; /* orange on hover */
+    cursor: pointer;
+  }
+
+  /* 5. Combined effects */
+  .combined {
+    color: #1C2833; /* dark gray text */
+    background-color: #85C1E9; /* light blue background */
+    padding: 5px 10px;
+    font-size: 20px;
+    transition: color 0.3s, background-color 0.3s;
+  }
+  .combined::first-letter {
+    color: #D35400; /* bright orange first letter */
+    font-size: 28px;
+    font-weight: bold;
+  }
+  .combined:hover {
+    color: #FFF;
+    background-color: #117A65; /* dark green hover background */
+  }
+
+  /* 6. Gradient text */
+  .gradient-text {
+    font-size: 24px;
+    font-weight: bold;
+    background: linear-gradient(90deg, #FF0000, #FF7F50, #FFD700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* 7. Text shadow */
+  .text-shadow {
+    font-size: 24px;
+    color: #2980B9; /* deep blue */
+    text-shadow: 3px 3px 6px #F1C40F; /* yellow shadow */
+  }
+
+  /* 8. Uppercase hover underline */
+  .hover-underline {
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #8E44AD; /* purple */
+    transition: all 0.3s;
+  }
+  .hover-underline:hover {
+    text-decoration: underline;
+    color: #E67E22; /* orange */
+  }
+
+  /* 9. Animated hover */
+  .animated-text {
+    font-size: 22px;
+    font-weight: bold;
+    background-color: #FADBD8; /* pink background */
+    color: #922B21; /* maroon text */
+    padding: 5px 10px;
+    transition: color 0.5s, background-color 0.5s;
+  }
+  .animated-text:hover {
+    color: #F7DC6F; /* yellow text */
+    background-color: #1ABC9C; /* teal background */
+  }
+
+  /* 10. Blinking text */
+  @keyframes blink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0; }
+  }
+  .blinking-text {
+    font-size: 24px;
+    color: #C70039; /* crimson */
+    animation: blink 1s infinite;
+  }
+
+  /* 11. Rotating first letter */
+  @keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  .rotate-first::first-letter {
+    color: #28B463; /* green */
+    font-size: 28px;
+    font-weight: bold;
+    display: inline-block;
+    animation: rotate 2s linear infinite;
+  }
+
+  /* 12. Rainbow hover text */
+  .rainbow-hover {
+    font-size: 22px;
+    font-weight: bold;
+    color: #FF33F6; /* pink */
+    transition: background 0.5s, color 0.5s;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  .rainbow-hover:hover {
+    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* 13. Gradient animation */
+  @keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  .gradient-animate {
+    font-size: 24px;
+    font-weight: bold;
+    background: linear-gradient(270deg, #FF6F61, #6B5B95, #88B04B, #F7CAC9);
+    background-size: 800% 800%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientMove 5s ease infinite;
+  }
+
+  /* 14. Skewed text */
+  .skewed-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: #34495E; /* dark blue-gray */
+    transform: skew(-10deg);
+  }
+
+  /* 15. Shadow hover glow */
+  .glow-hover {
+    font-size: 22px;
+    color: #D35400; /* orange */
+    transition: text-shadow 0.3s, color 0.3s;
+  }
+  .glow-hover:hover {
+    color: #F1C40F; /* yellow */
+    text-shadow: 0 0 10px #F1C40F, 0 0 20px #F39C12, 0 0 30px #E67E22;
+  }
+
+</style>
+</head>
+<body>
+
+<h2>Colorful Creative Text Playground</h2>
+
+<div class="box text-color">
+  1. Simple bright orange text
+</div>
+
+<div class="box text-background">
+  2. Dark blue text on golden yellow background
+</div>
+
+<div class="box first-letter">
+  3. First letter is purple
+</div>
+
+<div class="box hover-color">
+  4. Teal text changes to orange on hover
+</div>
+
+<div class="box combined">
+  5. Combined: dark gray text, blue background, orange first letter, green hover
+</div>
+
+<div class="box gradient-text">
+  6. Gradient: red → coral → gold
+</div>
+
+<div class="box text-shadow">
+  7. Deep blue text with yellow shadow
+</div>
+
+<div class="box hover-underline">
+  8. Purple uppercase text with orange underline on hover
+</div>
+
+<div class="box animated-text">
+  9. Maroon text on pink background, yellow/teal hover
+</div>
+
+<div class="box blinking-text">
+  10. Blinking crimson text
+</div>
+
+<div class="box rotate-first">
+  11. First letter rotates, green color
+</div>
+
+<div class="box rainbow-hover">
+  12. Pink text turns rainbow on hover
+</div>
+
+<div class="box gradient-animate">
+  13. Animated gradient text
+</div>
+
+<div class="box skewed-text">
+  14. Dark blue-gray skewed text
+</div>
+
+<div class="box glow-hover">
+  15. Orange text with yellow glow on hover
+</div>
+
+</body>
+</html>
