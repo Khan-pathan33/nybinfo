@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flexbox & Grid Visual Demo</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f2f2f2;
+        padding: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 40px;
+        color: #333;
+    }
+
+    .section {
+        margin-bottom: 50px;
+    }
+
+    .section-title {
+        text-align: center;
+        margin-bottom: 10px;
+        font-weight: bold;
+        color: #333;
+        font-size: 18px;
+    }
+
+    .container {
+        display: flex;
+        border: 2px solid #9c9c9c;
+        padding: 10px;
+        gap: 10px;
+        background: #e0e0e0;
+        min-height: 120px;
+    }
+
+    /* Boxes with unique colors */
+    .container > div {
+        flex: 1;
+        min-width: 60px;
+        padding: 30px;
+        text-align: center;
+        font-weight: bold;
+        color: #fff;
+        border-radius: 5px;
+    }
+
+    .box1 { background: #9c9c9c; }
+    .box2 { background: #f28c28; }
+    .box3 { background: #28a9f2; }
+    .box4 { background: #28f293; }
+
+    /* FLEXBOX DIRECTIONS */
+    .row { flex-direction: row; }
+    .row-reverse { flex-direction: row-reverse; }
+    .column { flex-direction: column; }
+    .column-reverse { flex-direction: column-reverse; }
+
+    /* JUSTIFY CONTENT */
+    .space-evenly { justify-content: space-evenly; }
+    .space-around { justify-content: space-around; }
+    .space-between { justify-content: space-between; }
+    .center { justify-content: center; }
+
+    /* ALIGN ITEMS */
+    .align-start { align-items: flex-start; }
+    .align-center { align-items: center; }
+    .align-end { align-items: flex-end; }
+
+    /* GRID LAYOUT */
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        background: #e0e0e0;
+        padding: 10px;
+    }
+
+    .grid-container > div {
+        background: #9c9c9c;
+        color: white;
+        padding: 30px;
+        text-align: center;
+        font-weight: bold;
+        border-radius: 5px;
+    }
+
+    /* Unique colors for grid example */
+    .grid-container > div:nth-child(1) { background: #9c9c9c; }
+    .grid-container > div:nth-child(2) { background: #f28c28; }
+    .grid-container > div:nth-child(3) { background: #28a9f2; }
+    .grid-container > div:nth-child(4) { background: #28f293; }
+
+</style>
+</head>
+<body>
+
+<h1>Flexbox & Grid Visual Cheat Sheet</h1>
+
+<!-- FLEX DIRECTION -->
+<div class="section">
+    <div class="section-title">Flex Direction: Row</div>
+    <div class="container row">
+        <div class="box1">1</div>
+        <div class="box2">2</div>
+        <div class="box3">3</div>
+        <div class="box4">4</div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-title">Flex Direction: Row-Reverse</div>
+    <div class="container row-reverse">
+        <div class="box1">1</div>
+        <div class="box2">2</div>
+        <div class="box3">3</div>
+        <div class="box4">4</div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-title">Flex Direction: Column</div>
+    <div class="container column" style="height: 300px;">
+        <div class="box1">1</div>
+        <div class="box2">2</div>
+        <div class="box3">3</div>
+        <div class="box4">4</div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-title">Flex Direction: Column-Reverse</div><br><br>
+    <div class="container column-reverse" style="height: 300px;">
+        <div class="box1">1</div>
+        <div class="box2">2</div>
+        <div class="box3">3</div>
+        <div class="box4">4</div>
+    </div>
+</div>
+
+<!-- FLEX SPACING -->
+<div class="section">
+    <div class="section-title">Flex Justify Content: Space Evenly (Row)</div>
+    <div class="container row space-evenly">
+        <div class="box1">1</div>
+        <div class="box2">2</div>
+        <div class="box3">3</div>
+        <div class="box4">4</div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-title">Flex Justify Content: Space Between (Row)</div>
+    <div class="container row space-between">
+        <div class="box1">1</div>
+        <div class="box2">2</div>
+        <div class="box3">3</div>
+        <div class="box4">4</div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-title">Flex Justify Content: Center (Row)</div>
+    <div class="container row center">
+        <div class="box1">1</div>
+        <div class="box2">2</div>
+        <div class="box3">3</div>
+        <div class="box4">4</div>
+    </div>
+</div>
+
+<!-- FLEX ALIGN ITEMS -->
+<div class="section">
+    <div class="section-title">Flex Align Items: Start</div>
+    <div class="container row align-start" style="height: 200px;">
+        <div class="box1">1</div>
+        <div class="box2">2</div>
+        <div class="box3">3</div>
+        <div class="box4">4</div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-title">Flex Align Items: Center</div>
+    <div class="container row align-center" style="height: 200px;">
+        <div class="box1">1</div>
+        <div class="box2">2</div>
+        <div class="box3">3</div>
+        <div class="box4">4</div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-title">Flex Align Items: End</div>
+    <div class="container row align-end" style="height: 200px;">
+        <div class="box1">1</div>
+        <div class="box2">2</div>
+        <div class="box3">3</div>
+        <div class="box4">4</div>
+    </div>
+</div>
+
+<!-- GRID DEMO -->
+<div class="section">
+    <div class="section-title">CSS Grid Layout Example</div>
+    <div class="grid-container">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+    </div>
+</div>
+
+</body>
+</html>

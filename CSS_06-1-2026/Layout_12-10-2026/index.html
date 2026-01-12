@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Layout Replica</title>
+<style>
+body {
+    margin: 0;
+    padding: 20px;
+    background: #f2f2f2;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    gap: 80px;
+    justify-content: center;
+}
+
+/* Big background frame */
+.bg {
+    background: #e4e3e3;
+    padding: 5px;
+    
+}
+
+/* Frame grid */
+.frame {
+    display: grid;
+    grid-template-columns: 60px auto 60px;
+    /* align-items: stretch; */
+}
+
+/* Side gutters */
+.gutter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Background label */
+.label {
+    transform: rotate(-90deg);
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #9c9c9c;
+    white-space: nowrap;
+    color: rgba(0, 0, 0, 0.15);
+}
+
+/* Page container */
+.page {
+    width: 360px;
+    background: transparent;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* Blocks */
+.block {
+    background: #b4b4b4;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6f6f6f;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* Left aligned content */
+.align-left {
+    justify-content: flex-start;
+    padding-left: 10px;
+}
+
+/* Split top bar for right layout */
+.top-split {
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+/* Left layout sizes */
+.l-logo { height: 42px; }
+.l-nav { height: 28px; }
+.l-header { height: 95px; }
+
+.middle {
+    display: flex;
+    gap: 20px;
+}
+
+.l-sidebar { width: 32%; height: 235px; }
+.l-body { width: 68%; height: 235px; }
+
+.l-footer { height: 36px; }
+
+/* Right layout */
+.r-top { height: 45px; }
+.r-header { height: 95px; }
+.r-intro { height: 70px; }
+
+.box-row {
+    display: flex;
+    gap: 20px;
+}
+
+.r-box { height: 190px; flex: 1; }
+
+.r-footer { height: 36px; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- LEFT LAYOUT -->
+    <div class="bg">
+        <div class="frame">
+
+            <div class="gutter">
+                <div class="label">Background</div>
+            </div>
+
+            <div class="page">
+
+                <div class="block l-logo align-left">Logo</div>
+                <div class="block l-nav">Navigation</div>
+                <div class="block l-header">Header / Banner</div>
+
+                <div class="middle">
+                    <div class="block l-sidebar">Side Bar</div>
+                    <div class="block l-body">Body Area</div>
+                </div>
+
+                <div class="block l-footer">Footer</div>
+
+            </div>
+
+            <div class="gutter">
+                <div class="label">Background</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- RIGHT LAYOUT -->
+    <div class="bg">
+        <div class="frame">
+
+            <div class="gutter">
+                <div class="label">Background</div>
+            </div>
+
+            <div class="page">
+
+                <div class="block r-top top-split">
+                    <span>Logo</span>
+                    <span>Navigation</span>
+                </div>
+
+                <div class="block r-header">Header / Banner</div>
+                <div class="block r-intro">Intro Text Area</div>
+
+                <div class="box-row">
+                    <div class="block r-box">Box 1</div>
+                    <div class="block r-box">Box 2</div>
+                    <div class="block r-box">Box 3</div>
+                </div>
+
+                <div class="block r-footer">Footer</div>
+
+            </div>
+
+            <div class="gutter">
+                <div class="label">Background</div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
