@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Layouts</title>
+<style>
+body {
+    margin: 0;
+    padding: 30px;
+    background: #f2f2f2;
+    font-family: Arial, sans-serif;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+    max-width: 900px;
+    margin: auto;
+}
+
+/* Background wrapper */
+.bg {
+    background: #e3e3e3;
+    padding: 30px 20px;
+}
+
+/* Side label */
+.frame {
+    display: grid;
+    grid-template-columns: 30px auto 30px;
+}
+
+.side {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    color: rgba(0,0,0,0.25);
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Page */
+.page {
+    width: 260px;
+}
+
+/* Generic block */
+.block {
+    background: #cfcfcf;
+    margin-bottom: 8px;
+    padding: 6px;
+    font-size: 13px;
+    color: #555;
+    text-align: center;
+}
+
+/* Heights */
+.logo { height: 26px; }
+.nav { height: 18px; }
+.header { height: 60px; }
+.footer { height: 18px; }
+
+.flex { display: flex; gap: 8px; }
+
+.sidebar { width: 32%; height: 145px; }
+#bar{
+    background: #e3e3e3;
+}
+.body { width: 68%; height: 145px; }
+
+.box { height: 100px; flex: 1; }
+.small { height: 36px; flex: 1; }
+
+/* Top split */
+.top {
+    display: flex;
+    justify-content: space-between;
+}
+</style>
+</head>
+<body>
+
+<div class="grid">
+
+<!-- LAYOUT 1 -->
+<div class="bg">
+<div class="frame">
+<div class="side">Background</div>
+<div class="page">
+<div class="block logo">Logo</div>
+<div class="block nav">Navigation</div>
+<div class="block header">Header / Banner</div>
+<div class="flex">
+    <div class="block sidebar">Side Bar</div>
+    <div class="block body">Body Area</div>
+</div>
+<div class="block footer">Footer</div>
+</div>
+<div class="side">Background</div>
+</div>
+</div>
+
+<!-- LAYOUT 2 -->
+<div class="bg">
+<div class="frame">
+<div class="side">Background</div>
+<div class="page">
+<div class="block logo top">
+    <span>Logo</span>
+    <span>Navigation</span>
+</div>
+<div class="block header">Header / Banner</div>
+<div class="block">Intro Text Area</div>
+<div class="flex">
+    <div class="block box">Box 1</div>
+    <div class="block box">Box 2</div>
+    <div class="block box">Box 3</div>
+</div>
+<div class="block footer">Footer</div>
+</div>
+<div class="side">Background</div>
+</div>
+</div>
+
+<!-- LAYOUT 3 -->
+<div class="bg">
+<div class="frame">
+<div class="side">Background</div>
+<div class="page">
+<div class="block logo">Logo</div>
+<div class="flex">
+    <div class="block sidebar" id="bar">Side bar<br>Navigation</div>
+    <div class="block body">
+        Header / Banner<br><br>
+        Body Area
+    </div>
+</div>
+<div class="block footer">Footer</div>
+</div>
+<div class="side">Background</div>
+</div>
+</div>
+
+<!-- LAYOUT 4 -->
+<div class="bg">
+<div class="frame">
+<div class="side">Background</div>
+<div class="page">
+<div class="block logo top">
+    <span>Logo</span>
+    <span>Navigation</span>
+</div>
+
+<div class="flex">
+    <div class="block small"></div>
+    <div class="block small"></div>
+    <div class="block small"></div>
+    <div class="block small"></div>
+</div>
+<div class="flex">
+    <div class="block small"></div>
+    <div class="block small"></div>
+    <div class="block small"></div>
+    <div class="block small"></div>
+</div>
+<div class="flex">
+    <div class="block small"></div>
+    <div class="block small"></div>
+    <div class="block small"></div>
+    <div class="block small"></div>
+</div>
+<div class="flex">
+    <div class="block small"></div>
+    <div class="block small"></div>
+    <div class="block small"></div>
+    <div class="block small"></div>
+</div>
+
+<div class="flex">
+    <div class="block box">Box 1</div>
+    <div class="block box">Box 2</div>
+    <div class="block box">Box 3</div>
+</div>
+<div class="block footer">Footer</div>
+</div>
+<div class="side">Background</div>
+</div>
+</div>
+
+</div>
+
+</body>
+</html>

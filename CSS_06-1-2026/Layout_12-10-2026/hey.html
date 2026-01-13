@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Exact Layouts</title>
+
+<style>
+body{
+    margin:0;
+    padding:30px;
+    background:#f2f2f2;
+    font-family:Arial, sans-serif;
+}
+
+.wrapper{
+    max-width:900px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:50px;
+}
+
+
+
+/* Background wrapper */
+.bg{
+    background:#e3e3e3;
+    padding:25px 10px;
+}
+
+.frame{
+    display:grid;
+    grid-template-columns:30px auto 30px;
+}
+
+.side{
+    writing-mode:vertical-rl;
+    transform:rotate(180deg);
+    color:rgba(0,0,0,0.2);
+    font-size:13px;
+    font-weight:600;
+    text-align:center;
+}
+
+/* Common blocks */
+.block{
+    background:#cfcfcf;
+    margin-bottom:8px;
+    padding:6px;
+    font-size:13px;
+    color:#555;
+    text-align:center;
+}
+
+/* ================= LAYOUT 1 ================= */
+.layout1{ width:260px; }
+
+.layout1-logo{ height:26px; }
+.layout1-nav{ height:18px; }
+.layout1-header{ height:60px; }
+.layout1-footer{ height:18px; }
+
+.layout1-middle{
+    display:flex;
+    gap:8px;
+}
+
+.layout1-sidebar{ width:32%; height:150px; }
+.layout1-body{ width:68%; height:150px; }
+
+/* ================= LAYOUT 2 ================= */
+.layout2{
+    width:260px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.layout2-top{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    height:32px;
+}
+
+.layout2-header{ height:60px; width:100%; }
+.layout2-intro{ height:50px; width:100%; }
+
+.layout2-boxes{
+    display:flex;
+    gap:8px;
+    width:100%;
+}
+
+.layout2-box{ height:100px; flex:1; }
+
+.layout2-footer{ height:18px; width:100%; }
+
+/* ================= LAYOUT 3 ================= */
+.layout3{ width:260px; }
+
+.layout3-logo{ height:26px; }
+
+.layout3-content{
+    display:flex;
+    gap:8px;
+}
+
+.layout3-sidebar{
+    width:32%;
+    height:190px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background: #e3e3e3;
+}
+
+.layout3-main{
+    width:68%;
+    height:200px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.layout3-header{ height:50px; }
+.layout3-body{ height:120px; }
+
+.layout3-footer{ height:18px; }
+
+/* ================= LAYOUT 4 ================= */
+.layout4{ width:260px; }
+
+.layout4-top{
+    display:flex;
+    justify-content:space-between;
+    height:32px;
+}
+
+.layout4-grid{
+    display:flex;
+    gap:8px;
+    margin-bottom:6px;
+}
+
+.layout4-cell{
+    height:36px;
+    flex:1;
+    background:#cfcfcf;
+}
+
+.layout4-boxes{
+    display:flex;
+    gap:8px;
+}
+
+.layout4-box{
+    height:90px;
+    flex:1;
+}
+
+.layout4-footer{ height:18px; }
+
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+<!-- ================= Layout 1 ================= -->
+<div class="bg">
+<div class="frame">
+<div class="side">Background</div>
+
+<div class="layout1">
+    <div class="block layout1-logo">Logo</div>
+    <div class="block layout1-nav">Navigation</div>
+    <div class="block layout1-header">Header / Banner</div>
+
+    <div class="layout1-middle">
+        <div class="block layout1-sidebar">Side Bar</div>
+        <div class="block layout1-body">Body Area</div>
+    </div>
+
+    <div class="block layout1-footer">Footer</div>
+</div>
+
+<div class="side">Background</div>
+</div>
+</div>
+
+<!-- ================= Layout 2 ================= -->
+<div class="bg">
+<div class="frame">
+<div class="side">Background</div>
+
+<div class="layout2">
+    <div class="block layout2-top">
+        <span>Logo</span>
+        <span>Navigation</span>
+    </div>
+
+    <div class="block layout2-header">Header / Banner</div>
+    <div class="block layout2-intro">Intro Text Area</div>
+
+    <div class="layout2-boxes">
+        <div class="block layout2-box">Box 1</div>
+        <div class="block layout2-box">Box 2</div>
+        <div class="block layout2-box">Box 3</div>
+    </div>
+
+    <div class="block layout2-footer">Footer</div>
+</div>
+
+<div class="side">Background</div>
+</div>
+</div>
+
+<!-- ================= Layout 3 ================= -->
+<div class="bg">
+<div class="frame">
+<div class="side">Background</div>
+
+<div class="layout3">
+    <div class="block layout3-logo">Logo</div>
+
+    <div class="layout3-content">
+        <div class="block layout3-sidebar">Side Bar<br>Navigation</div>
+
+        <div class="layout3-main">
+            <div class="block layout3-header">Header / Banner</div>
+            <div class="block layout3-body">Body Area</div>
+        </div>
+    </div>
+
+    <div class="block layout3-footer">Footer</div>
+</div>
+
+<div class="side">Background</div>
+</div>
+</div>
+
+<!-- ================= Layout 4 ================= -->
+<div class="bg">
+<div class="frame">
+<div class="side">Background</div>
+
+<div class="layout4">
+    <div class="block layout4-top">
+        <span>Logo</span>
+        <span>Navigation</span>
+    </div>
+
+    <div class="layout4-grid">
+        <div class="layout4-cell"></div>
+        <div class="layout4-cell"></div>
+        <div class="layout4-cell"></div>
+        <div class="layout4-cell"></div>
+    </div>
+    <div class="layout4-grid">
+        <div class="layout4-cell"></div>
+        <div class="layout4-cell"></div>
+        <div class="layout4-cell"></div>
+        <div class="layout4-cell"></div>
+    </div>
+    <div class="layout4-grid">
+        <div class="layout4-cell"></div>
+        <div class="layout4-cell"></div>
+        <div class="layout4-cell"></div>
+        <div class="layout4-cell"></div>
+    </div>
+    <div class="layout4-grid">
+        <div class="layout4-cell"></div>
+        <div class="layout4-cell"></div>
+        <div class="layout4-cell"></div>
+        <div class="layout4-cell"></div>
+    </div>
+
+    <div class="layout4-boxes">
+        <div class="block layout4-box">Box 1</div>
+        <div class="block layout4-box">Box 2</div>
+        <div class="block layout4-box">Box 3</div>
+    </div>
+
+    <div class="block layout4-footer">Footer</div>
+</div>
+
+<div class="side">Background</div>
+</div>
+</div>
+
+</div>
+
+</body>
+</html>
