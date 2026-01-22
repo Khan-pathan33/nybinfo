@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Responsive Device Mockups</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+body {
+  background: #e0e0e0;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 30px;
+}
+
+/* COLUMN */
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+/* DEVICE */
+.device {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #aaa;
+}
+
+/* TOP BAR */
+.top-bar {
+  background: #ddd;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.circles {
+  display: flex;
+  gap: 5px;
+}
+
+.circle {
+  width: 10px;
+  height: 10px;
+  background: #888;
+  border-radius: 50%;
+}
+
+.rect {
+  width: 60px;
+  height: 10px;
+  background: #bbb;
+  border-radius: 3px;
+}
+
+/* COLORS */
+.blue   { background: #bcdcff; }
+.gray   { background: #f1f1f1; }
+.light  { background: #d9ecff; }
+.yellow { background: #f6d28b; }
+.red    { background: #f7a3a3; }
+.purple { background: #c9c7ff; }
+
+/* BLOCKS */
+.header  { padding: 25px; }
+.content { padding: 60px 30px; }
+.signup  { padding: 25px; }
+.feature { padding: 25px; }
+
+/* MOBILE */
+.mobile {
+  width: 260px;
+}
+
+/* TABLET */
+.tablet {
+  width: 320px;
+}
+
+.tablet .features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* DESKTOP */
+.desktop {
+  width: 380px;
+}
+
+.desktop .features {
+  display: flex;
+}
+
+.desktop .feature {
+  flex: 1;
+  padding: 50px 10px;
+}
+
+.desktop .signup {
+  padding: 40px;
+}
+
+.desktop .content {
+  padding: 80px 30px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- MOBILE -->
+<div class="column">
+  <h2>MOBILE</h2>
+  <div class="device mobile">
+    <div class="top-bar">
+      <div class="circles">
+        <div class="circle"></div><div class="circle"></div><div class="circle"></div>
+      </div>
+      <div class="rect"></div>
+    </div>
+    <div class="header blue">HEADER</div>
+    <div class="content gray">CONTENT</div>
+    <div class="signup light">SIGN UP</div>
+    <div class="feature yellow">FEATURE</div>
+    <div class="feature red">FEATURE</div>
+    <div class="feature purple">FEATURE</div>
+  </div>
+</div>
+
+<!-- TABLET -->
+<div class="column">
+  <h2>TABLET</h2>
+  <div class="device tablet">
+    <div class="top-bar">
+      <div class="circles">
+        <div class="circle"></div><div class="circle"></div><div class="circle"></div>
+      </div>
+      <div class="rect"></div>
+    </div>
+    <div class="header blue">HEADER</div>
+    <div class="content gray">CONTENT</div>
+    <div class="signup light">SIGN UP</div>
+    <div class="features">
+      <div class="feature yellow">FEATURE</div>
+      <div class="feature purple">FEATURE</div>
+      <div class="feature red">FEATURE</div>
+    </div>
+  </div>
+</div>
+
+<!-- DESKTOP -->
+<div class="column">
+  <h2>DESKTOP</h2>
+  <div class="device desktop">
+    <div class="top-bar">
+      <div class="circles">
+        <div class="circle"></div><div class="circle"></div><div class="circle"></div>
+      </div>
+      <div class="rect"></div>
+    </div>
+    <div class="header blue">HEADER</div>
+    <div class="features">
+      <div class="feature yellow">FEATURE</div>
+      <div class="feature purple">FEATURE</div>
+      <div class="feature red">FEATURE</div>
+    </div>
+    <div class="signup light">SIGN UP</div>
+    <div class="content gray">CONTENT</div>
+  </div>
+</div>
+
+</body>
+</html>

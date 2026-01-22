@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mood Universe</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        font-family: 'Segoe UI', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: background 1s;
+        overflow: hidden;
+    }
+
+    .card {
+        background: rgba(255,255,255,0.2);
+        backdrop-filter: blur(10px);
+        padding: 30px;
+        border-radius: 20px;
+        text-align: center;
+        color: white;
+        width: 320px;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+    }
+
+    button {
+        padding: 10px 18px;
+        margin: 8px;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 15px;
+    }
+
+    .emoji {
+        font-size: 60px;
+        margin: 20px 0;
+        animation: float 2s infinite ease-in-out;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0); }
+    }
+
+    p {
+        font-size: 18px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>Mood Universe 🌍</h1>
+
+    <button onclick="changeMood('happy')">😊 Happy</button>
+    <button onclick="changeMood('sad')">😔 Sad</button>
+    <button onclick="changeMood('angry')">😡 Angry</button>
+    <button onclick="changeMood('calm')">😌 Calm</button>
+
+    <div class="emoji" id="emoji">✨</div>
+    <p id="message">Choose your mood</p>
+</div>
+
+<script>
+    function changeMood(mood) {
+        const body = document.body;
+        const emoji = document.getElementById("emoji");
+        const message = document.getElementById("message");
+
+        if (mood === "happy") {
+            body.style.background = "linear-gradient(120deg, #f6d365, #fda085)";
+            emoji.textContent = "😄";
+            message.textContent = "Happiness looks good on you!";
+        }
+
+        if (mood === "sad") {
+            body.style.background = "linear-gradient(120deg, #89f7fe, #66a6ff)";
+            emoji.textContent = "😢";
+            message.textContent = "It's okay to feel down sometimes.";
+        }
+
+        if (mood === "angry") {
+            body.style.background = "linear-gradient(120deg, #ff0844, #ffb199)";
+            emoji.textContent = "😠";
+            message.textContent = "Pause. Breathe. Reset.";
+        }
+
+        if (mood === "calm") {
+            body.style.background = "linear-gradient(120deg, #a1c4fd, #c2e9fb)";
+            emoji.textContent = "🧘";
+            message.textContent = "Peace begins within.";
+        }
+    }
+</script>
+
+</body>
+</html>

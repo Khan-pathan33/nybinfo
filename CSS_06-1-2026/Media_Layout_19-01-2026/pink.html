@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Responsive Layout with Headings</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+body {
+  background: #e0e0e0;
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+}
+
+/* WRAPPER */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* HEADING */
+.view-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* DEVICE */
+.device {
+  width: 260px; /* mobile default */
+  background: #fff;
+  border: 1px solid #aaa;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* TOP BAR */
+.top-bar {
+  height: 30px;
+  background: #eee;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.circles {
+  display: flex;
+  gap: 5px;
+}
+
+.circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #bbb;
+}
+
+.rect {
+  width: 70px;
+  height: 10px;
+  background: #ccc;
+  border-radius: 3px;
+}
+
+/* COLORS */
+.blue   { background: #bcdcff; }
+.gray   { background: #f1f1f1; }
+.light  { background: #d9ecff; }
+.yellow { background: #f6d28b; }
+.red    { background: #f7a3a3; }
+.purple { background: #c9c7ff; }
+
+/* BLOCKS */
+.header  { padding: 25px; }
+.content { padding: 60px 25px; }
+.signup  { padding: 25px; }
+
+.features {
+  display: flex;
+  flex-direction: column;
+}
+
+.feature {
+  padding: 25px;
+}
+
+
+/*Tablet*/
+@media (min-width: 600px) {
+  .view-title::after {
+    content: " TABLET";
+  }
+
+  .device {
+    width: 320px;
+  }
+
+  .features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .signup {
+    grid-column: 1 / 2;
+  }
+}
+
+/*Desktop */
+@media (min-width: 900px) {
+  .view-title::after {
+    content: " DESKTOP";
+  }
+
+  .device {
+    width: 380px;
+  }
+
+  .features {
+    display: flex;
+  }
+
+  .feature {
+    flex: 1;
+    padding: 50px 10px;
+  }
+
+  .signup {
+    padding: 40px;
+  }
+
+  .content {
+    padding: 80px 30px;
+    order: 4;
+  }
+
+  .signup {
+    order: 3;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+  <div class="view-title"></div>
+
+  <div class="device">
+
+    <!-- TOP EMPTY BAR -->
+    <div class="top-bar">
+      <div class="circles">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+      </div>
+      <div class="rect"></div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="header blue">(HEADER)</div>
+    <div class="content gray">(CONTENT)</div>
+   
+
+    <div class="features">
+         <div class="signup light">(SIGN UP)</div>
+      <div class="feature yellow">(FEATURE)</div>
+      <div class="feature purple">(FEATURE)</div>
+      <div class="feature red">(FEATURE)</div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

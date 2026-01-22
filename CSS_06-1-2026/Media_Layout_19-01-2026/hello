@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mobile Fixed Layout</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    * {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Page background (desktop / tablet) */
+body {
+  background: #ddd;
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+/* MOBILE SIZE — FIXED */
+.mobile-wrapper {
+  width: 375px;          /* Mobile width */
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0,0,0,0.15);
+}
+
+/* Sections */
+.header {
+  background: #b7d8ff;
+  padding: 40px;
+  text-align: center;
+}
+
+.content {
+  background: #eee;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.signup {
+  background: #d7ecff;
+  padding: 30px;
+  text-align: center;
+}
+
+.feature {
+  padding: 40px;
+  text-align: center;
+}
+
+.f1 { background: #f6d28b; }
+.f2 { background: #f7a6a6; }
+.f3 { background: #c9c4ff; }
+
+/* OPTIONAL: smaller phones */
+@media (max-width: 400px) {
+  .mobile-wrapper {
+    width: 100%;
+    border-radius: 0;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <div class="mobile-wrapper">
+    <header class="header">HEADER</header>
+
+    <section class="content">CONTENT</section>
+
+    <section class="signup">SIGN UP</section>
+
+    <section class="feature f1">FEATURE</section>
+    <section class="feature f2">FEATURE</section>
+    <section class="feature f3">FEATURE</section>
+  </div>
+
+</body>
+</html>
