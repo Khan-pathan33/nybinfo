@@ -1,5 +1,5 @@
-import Functional from "./components/Functional";
 import Class from "./components/Class";
+import Functional from "./components/functional";
 
 function App() {
   return (
