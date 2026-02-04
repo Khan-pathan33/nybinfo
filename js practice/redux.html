@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Redux Demo – Plain JS</title>
+
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --secondary: #22c55e;
+      --danger: #ef4444;
+      --bg: #f9fafb;
+      --card: #ffffff;
+      --text: #111827;
+    }
+
+    body {
+      margin: 0;
+      padding: 30px;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    h1 {
+      color: var(--primary);
+    }
+
+    h3 {
+      margin-top: 30px;
+    }
+
+    button {
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.1s, opacity 0.1s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+
+    .add {
+      background: var(--primary);
+      color: white;
+    }
+
+    .remove {
+      background: var(--danger);
+      color: white;
+    }
+
+    .product,
+    .cart-item {
+      background: var(--card);
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+    }
+
+    .price {
+      color: var(--secondary);
+      font-weight: bold;
+    }
+
+    .summary {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+
+    .highlight {
+      color: var(--primary);
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+
+<h1>🛍️ Mini eCommerce (Redux)</h1>
+<p>Centralized state • Predictable updates • Clean logic</p>
+
+<h3>Products</h3>
+<div id="products"></div>
+
+<h3>Cart</h3>
+<div class="summary">
+  Items: <span id="itemCount" class="highlight">0</span> |
+  Total: $<span id="totalPrice" class="highlight">0</span>
+</div>
+
+<div id="cart"></div>
+
+<script>
+/* ================= MINI REDUX CORE ================= */
+function createStore(reducer) {
+  let state;
+  let listeners = [];
+
+  function getState() {
+    return state;
+  }
+
+  function dispatch(action) {
+    state = reducer(state, action);
+    listeners.forEach(l => l());
+  }
+
+  function subscribe(listener) {
+    listeners.push(listener);
+  }
+
+  dispatch({ type: "@@INIT" });
+  return { getState, dispatch, subscribe };
+}
+
+/* ================= DATA ================= */
+const PRODUCTS = [
+  { id: 1, name: "Laptop", price: 800 },
+  { id: 2, name: "Phone", price: 400 },
+  { id: 3, name: "Headphones", price: 100 },
+  { id: 4, name: "Keyboard", price: 70 }
+];
+
+/* ================= REDUCER ================= */
+function shopReducer(
+  state = { cart: [], totalItems: 0, totalPrice: 0 },
+  action
+) {
+  switch (action.type) {
+
+    case "ADD_TO_CART": {
+      const item = action.payload;
+      const existing = state.cart.find(i => i.id === item.id);
+
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        state.cart.push({ ...item, qty: 1 });
+      }
+
+      return {
+        ...state,
+        totalItems: state.totalItems + 1,
+        totalPrice: state.totalPrice + item.price
+      };
+    }
+
+    case "REMOVE_FROM_CART": {
+      const item = action.payload;
+      const existing = state.cart.find(i => i.id === item.id);
+
+      if (!existing) return state;
+
+      if (existing.qty === 1) {
+        state.cart = state.cart.filter(i => i.id !== item.id);
+      } else {
+        existing.qty -= 1;
+      }
+
+      return {
+        ...state,
+        totalItems: state.totalItems - 1,
+        totalPrice: state.totalPrice - item.price
+      };
+    }
+
+    default:
+      return state;
+  }
+}
+
+/* ================= STORE ================= */
+const store = createStore(shopReducer);
+
+/* ================= UI ================= */
+const productsDiv = document.getElementById("products");
+const cartDiv = document.getElementById("cart");
+const itemCount = document.getElementById("itemCount");
+const totalPrice = document.getElementById("totalPrice");
+
+function renderProducts() {
+  productsDiv.innerHTML = "";
+  PRODUCTS.forEach(p => {
+    const div = document.createElement("div");
+    div.className = "product";
+    div.innerHTML = `
+      <div>
+        <strong>${p.name}</strong><br/>
+        <span class="price">$${p.price}</span>
+      </div>
+      <button class="add">Add</button>
+    `;
+    div.querySelector("button").onclick = () => {
+      store.dispatch({ type: "ADD_TO_CART", payload: p });
+    };
+    productsDiv.appendChild(div);
+  });
+}
+
+function renderCart() {
+  const state = store.getState();
+  cartDiv.innerHTML = "";
+
+  state.cart.forEach(item => {
+    const div = document.createElement("div");
+    div.className = "cart-item";
+    div.innerHTML = `
+      <div>
+        <strong>${item.name}</strong>
+        <span class="price"> x${item.qty}</span>
+      </div>
+      <button class="remove">Remove</button>
+    `;
+    div.querySelector("button").onclick = () => {
+      store.dispatch({ type: "REMOVE_FROM_CART", payload: item });
+    };
+    cartDiv.appendChild(div);
+  });
+
+  itemCount.innerText = state.totalItems;
+  totalPrice.innerText = state.totalPrice;
+}
+
+/* ================= SUBSCRIBE ================= */
+store.subscribe(renderCart);
+
+/* ================= INIT ================= */
+renderProducts();
+renderCart();
+</script>
+
+</body>
+</html>
