@@ -1,0 +1,292 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Watchlist Tracker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    h1 {
+      text-align: center;
+      color: #1f2937;
+    }
+    h2 {
+      margin-bottom: 10px;
+      color: #111827;
+    }
+    input {
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      width: 70%;
+    }
+    button {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      color: #fff;
+    }
+    button.add {
+      background-color: #3b82f6;
+    }
+    button.add:hover {
+      background-color: #2563eb;
+    }
+    button.watched {
+      background-color: #10b981;
+    }
+    button.watched:hover {
+      background-color: #059669;
+    }
+    button.unwatch {
+      background-color: #facc15;
+    }
+    button.unwatch:hover {
+      background-color: #eab308;
+    }
+    button.remove {
+      background-color: #ef4444;
+    }
+    button.remove:hover {
+      background-color: #dc2626;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      background: #fff;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    li.watched {
+      text-decoration: line-through;
+      background-color: #d1fae5;
+    }
+    .buttons {
+      display: flex;
+      gap: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎬 Movie Watchlist Tracker</h1>
+
+  <div>
+    <h2>Add Movie</h2>
+    <input id="movieInput" type="text" placeholder="Movie name" />
+    <button class="add" onclick="addMovie()">Add</button>
+  </div>
+
+  <div>
+    <h2>My Watchlist</h2>
+    <ul id="watchlist"></ul>
+  </div>
+
+  <script>
+    // -------------- State --------------
+    let watchlist = [];
+
+    // -------------- Functions --------------
+    function addMovie() {
+      const input = document.getElementById('movieInput');
+      const title = input.value.trim();
+      if (!title) return;
+      watchlist.push({ id: Date.now(), title, watched: false });
+      input.value = '';
+      renderWatchlist();
+    }
+
+    function toggleWatched(id) {
+      const movie = watchlist.find(m => m.id === id);
+      if (movie) movie.watched = !movie.watched;
+      renderWatchlist();
+    }
+
+    function removeMovie(id) {
+      watchlist = watchlist.filter(m => m.id !== id);
+      renderWatchlist();
+    }
+
+    function renderWatchlist() {
+      const ul = document.getElementById('watchlist');
+      ul.innerHTML = '';
+      watchlist.forEach(movie => {
+        const li = document.createElement('li');
+        li.className = movie.watched ? 'watched' : '';
+        li.innerHTML = `
+          <span>${movie.title}</span>
+          <div class="buttons">
+            <button class="${movie.watched ? 'unwatch' : 'watched'}" onclick="toggleWatched(${movie.id})">
+              ${movie.watched ? 'Unwatch' : 'Watched'}
+            </button>
+            <button class="remove" onclick="removeMovie(${movie.id})">Remove</button>
+          </div>
+        `;
+        ul.appendChild(li);
+      });
+    }
+  </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redux Concepts Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #f9fafb;
+    }
+    h1, h2 {
+      text-align: center;
+    }
+    .section {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+      background-color: #fff;
+    }
+    button {
+      margin: 2px;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      color: white;
+    }
+    .increment { background-color: #10b981; }
+    .decrement { background-color: #ef4444; }
+    .reset { background-color: #6b7280; }
+    .red { background-color: #ef4444; }
+    .green { background-color: #10b981; }
+    .blue { background-color: #3b82f6; }
+    .box {
+      width: 100%;
+      height: 50px;
+      margin-bottom: 10px;
+      border-radius: 4px;
+    }
+    .log {
+      background: #f3f4f6;
+      padding: 10px;
+      border-radius: 6px;
+      max-height: 150px;
+      overflow-y: auto;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Redux</h1>
+
+  <div class="section" id="counterSection">
+    <h2>Counter Slice</h2>
+    <p>Value: <span id="counterValue">0</span></p>
+    <button class="increment" onclick="dispatch({type:'increment'})">Increment</button>
+    <button class="decrement" onclick="dispatch({type:'decrement'})">Decrement</button>
+    <button class="reset" onclick="dispatch({type:'reset'})">Reset</button>
+  </div>
+
+  <div class="section" id="colorSection">
+    <h2>Color Slice</h2>
+    <div class="box" id="colorBox" style="background-color:white"></div>
+    <button class="red" onclick="dispatch({type:'setRed'})">Red</button>
+    <button class="green" onclick="dispatch({type:'setGreen'})">Green</button>
+    <button class="blue" onclick="dispatch({type:'setBlue'})">Blue</button>
+  </div>
+
+  <div class="section">
+    <h2>Action Log (Dispatch)</h2>
+    <div class="log" id="log"></div>
+  </div>
+
+  <script>
+    // ---------------- State (Store) ----------------
+    const store = {
+      state: {
+        counter: { value: 0 },
+        color: { bgColor: 'white' }
+      },
+      listeners: [],
+      getState() {
+        return this.state;
+      },
+      subscribe(listener) {
+        this.listeners.push(listener);
+      },
+      dispatch(action) {
+        // Counter Reducer
+        const counterReducer = (state, action) => {
+          switch(action.type) {
+            case 'increment': return { value: state.value + 1 };
+            case 'decrement': return { value: state.value - 1 };
+            case 'reset': return { value: 0 };
+            default: return state;
+          }
+        };
+        // Color Reducer
+        const colorReducer = (state, action) => {
+          switch(action.type) {
+            case 'setRed': return { bgColor: 'red' };
+            case 'setGreen': return { bgColor: 'green' };
+            case 'setBlue': return { bgColor: 'blue' };
+            default: return state;
+          }
+        };
+        // Update state
+        this.state.counter = counterReducer(this.state.counter, action);
+        this.state.color = colorReducer(this.state.color, action);
+
+        // Notify listeners
+        this.listeners.forEach(l => l());
+        logAction(action);
+      }
+    };
+
+    // ---------------- Dispatch function ----------------
+    function dispatch(action) {
+      store.dispatch(action);
+    }
+
+    // ---------------- Render UI ----------------
+    function render() {
+      document.getElementById('counterValue').innerText = store.state.counter.value;
+      document.getElementById('colorBox').style.backgroundColor = store.state.color.bgColor;
+    }
+
+    // ---------------- Log actions ----------------
+    function logAction(action) {
+      const logDiv = document.getElementById('log');
+      const p = document.createElement('p');
+      p.innerText = `Dispatched action: ${JSON.stringify(action)}, State: ${JSON.stringify(store.getState())}`;
+      logDiv.appendChild(p);
+      logDiv.scrollTop = logDiv.scrollHeight;
+    }
+
+    // ---------------- Subscribe render to store ----------------
+    store.subscribe(render);
+
+    // Initial render
+    render();
+  </script>
+</body>
+</html>

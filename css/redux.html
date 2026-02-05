@@ -1,0 +1,178 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Redux Toolkit Counter</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f3f4f6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: white;
+      padding: 2rem 3rem;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    h1 { margin-bottom: 1rem; font-size: 1.8rem; }
+    h2 { margin-bottom: 1rem; font-size: 1.5rem; }
+    button {
+      margin: 0 5px;
+      padding: 8px 16px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      color: white;
+      background: #2563eb;
+    }
+    button.reset { background: #f87171; }
+    button:hover { opacity: 0.9; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Redux Toolkit Counter</h1>
+    <h2 id="count">Count: 0</h2>
+    <button id="increment">+</button>
+    <button id="decrement">-</button>
+    <button id="reset" class="reset">Reset</button>
+  </div>
+
+  <script type="module">
+    // ======= IMPORT REDUX TOOLKIT =======
+    import { configureStore, createSlice } from "https://cdn.skypack.dev/@reduxjs/toolkit";
+
+    // ======= CREATE SLICE =======
+    const counterSlice = createSlice({
+      name: "counter",
+      initialState: { value: 0 },
+      reducers: {
+        increment: state => { state.value += 1; },
+        decrement: state => { state.value -= 1; },
+        reset: state => { state.value = 0; },
+      }
+    });
+
+    const { increment, decrement, reset } = counterSlice.actions;
+
+    // ======= CREATE STORE =======
+    const store = configureStore({
+      reducer: counterSlice.reducer
+    });
+
+    // ======= DOM ELEMENTS =======
+    const countEl = document.getElementById("count");
+    const incBtn = document.getElementById("increment");
+    const decBtn = document.getElementById("decrement");
+    const resetBtn = document.getElementById("reset");
+
+    // ======= UPDATE DOM FUNCTION =======
+    function render() {
+      const state = store.getState();
+      countEl.textContent = `Count: ${state.value}`;
+    }
+
+    // ======= SUBSCRIBE TO STORE =======
+    store.subscribe(render);
+
+    // ======= BUTTON EVENTS =======
+    incBtn.addEventListener("click", () => store.dispatch(increment()));
+    decBtn.addEventListener("click", () => store.dispatch(decrement()));
+    resetBtn.addEventListener("click", () => store.dispatch(reset()));
+
+    // ======= INITIAL RENDER =======
+    render();
+  </script>
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tooltip Demo</title>
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      background: #f1f5f9;
+      font-family: Arial, sans-serif;
+    }
+
+    .tooltip-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .tooltip {
+      position: absolute;
+      bottom: 120%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #111827;
+      color: #fff;
+      padding: 6px 10px;
+      font-size: 14px;
+      border-radius: 6px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .tooltip::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) rotate(45deg);
+      width: 8px;
+      height: 8px;
+      background: #111827;
+    }
+
+    .tooltip-wrapper:hover .tooltip {
+      opacity: 1;
+    }
+
+    button {
+      padding: 10px 16px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .text-link {
+      text-decoration: underline;
+      cursor: pointer;
+      color: #334155;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="tooltip-wrapper">
+    <button>Hover me</button>
+    <div class="tooltip">This is a tooltip</div>
+  </div>
+
+  <div class="tooltip-wrapper">
+    <span class="text-link">Hover text</span>
+    <div class="tooltip">Another tooltip example</div>
+  </div>
+
+</body>
+</html>
