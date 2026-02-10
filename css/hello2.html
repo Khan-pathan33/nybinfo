@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premium Dark/Light Portfolio</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap');
+
+  * { margin:0; padding:0; box-sizing: border-box; }
+  body {
+    font-family: 'Roboto', sans-serif;
+    background: #0f0f0f;
+    color: #fff;
+    transition: background 0.5s, color 0.5s;
+  }
+  a { text-decoration: none; color: inherit; cursor: pointer; }
+
+  /* ===== Header ===== */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: linear-gradient(90deg, #1f1f1f, #111);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  header h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 28px;
+    background: linear-gradient(45deg, #ff4d4d, #1e90ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    cursor: pointer;
+  }
+  nav a { margin-left: 25px; font-weight: bold; position: relative; transition: 0.3s; }
+  nav a::after { content: ''; display: block; width: 0; height: 2px; background: #ff4d4d; transition: 0.3s; position: absolute; bottom: -5px; left: 0; }
+  nav a:hover::after { width: 100%; }
+
+  /* ===== Hero Section ===== */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    text-align: center;
+    background: radial-gradient(circle at center, #1e1e1e, #0f0f0f);
+  }
+  .hero h2 {
+    font-size: 50px;
+    background: linear-gradient(45deg, #ff4d4d, #1e90ff, #ffcc00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientMove 5s ease infinite;
+  }
+  @keyframes gradientMove { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+  .hero p { font-size: 18px; margin-top: 15px; color: #bbb; }
+  .hero .btn { margin-top: 25px; padding: 12px 30px; font-size: 18px; border: none; border-radius: 30px; cursor: pointer; background: linear-gradient(45deg, #ff4d4d, #1e90ff); color: #fff; transition: 0.3s; }
+  .hero .btn:hover { transform: scale(1.05); box-shadow: 0 5px 20px rgba(255,77,77,0.5); }
+
+  /* ===== Sections ===== */
+  section { padding: 80px 20px; max-width: 1000px; margin: 0 auto; }
+  section h2 { font-family: 'Montserrat', sans-serif; font-size: 36px; margin-bottom: 40px; background: linear-gradient(45deg, #ff4d4d, #1e90ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  section p { font-size: 18px; line-height: 1.8; color: #ccc; }
+
+  /* ===== Cards ===== */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+  .card { background: #1a1a1a; padding: 25px; border-radius: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.5); transition: transform 0.3s, box-shadow 0.3s; }
+  .card:hover { transform: translateY(-10px); box-shadow: 0 10px 30px rgba(255,77,77,0.5); }
+  .card h3 { margin-bottom: 15px; background: linear-gradient(45deg, #ff4d4d, #1e90ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .card p { color: #bbb; }
+
+  /* ===== Footer ===== */
+  footer { text-align: center; padding: 30px; background: #111; color: #777; }
+
+  /* ===== Dark/Light Toggle ===== */
+  .toggle-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #1a1a1a;
+    padding: 10px 15px;
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+  }
+  .toggle-container label { display: flex; align-items: center; gap: 8px; font-weight: bold; color: #fff; cursor: pointer; }
+  .toggle-container input[type="checkbox"] { width: 50px; height: 24px; cursor: pointer; accent-color: #ff4d4d; }
+
+  /* ===== Light Mode ===== */
+  .light-mode { background: #f0f0f0; color: #222; }
+  .light-mode header, .light-mode footer { background: #fff; color: #222; }
+  .light-mode section p, .light-mode .card p { color: #333; }
+  .light-mode .hero p { color: #444; }
+
+  /* ===== Login Modal ===== */
+  .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); justify-content: center; align-items: center; z-index: 2000; }
+  .modal-content { background: #1a1a1a; padding: 40px; border-radius: 20px; max-width: 400px; width: 90%; position: relative; box-shadow: 0 5px 30px rgba(255,77,77,0.5); transition: background 0.5s, color 0.5s; }
+  .modal h2 { text-align: center; margin-bottom: 30px; background: linear-gradient(45deg, #ff4d4d, #1e90ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .modal label { display: block; margin-bottom: 5px; color: #ccc; }
+  .modal input { width: 100%; padding: 10px 15px; margin-bottom: 20px; border-radius: 10px; border: none; background: #111; color: #fff; }
+  .modal .btn { width: 100%; padding: 12px; border-radius: 20px; border: none; background: linear-gradient(45deg, #ff4d4d, #1e90ff); color: #fff; font-size: 18px; cursor: pointer; transition: 0.3s; }
+  .modal .btn:hover { transform: scale(1.05); box-shadow: 0 5px 20px rgba(255,77,77,0.5); }
+  .modal .close { position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; color: #fff; }
+  .modal a { color: #1e90ff; text-align: center; display: block; margin-top: 10px; }
+
+  /* Light Mode for Modal */
+  .light-mode .modal-content { background: #fff; color: #222; }
+  .light-mode .modal input { background: #f0f0f0; color: #222; }
+  .light-mode .modal label { color: #444; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1 id="logo">MyPortfolio</h1>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<div class="toggle-container">
+  <label>
+    🌞
+    <input type="checkbox" id="darkModeToggle">
+    🌙
+  </label>
+</div>
+
+<section class="hero" id="home">
+  <h2>Hello, I'm Unique</h2>
+  <p>Web Developer & Designer creating modern, dark-themed websites.</p>
+  <button class="btn">Explore My Work</button>
+</section>
+
+<section id="about">
+  <h2>About Me</h2>
+  <p>I specialize in crafting visually appealing, responsive, and modern websites using HTML, CSS, and JavaScript. I love combining dark themes with gradients and smooth animations to create unique user experiences.</p>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Project One</h3>
+      <p>A dark-themed landing page with animations and responsive design.</p>
+    </div>
+    <div class="card">
+      <h3>Project Two</h3>
+      <p>A portfolio website with modern UI and interactive elements.</p>
+    </div>
+    <div class="card">
+      <h3>Project Three</h3>
+      <p>A small business website with gradient buttons and hover effects.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Want to work together? Send me an email or reach out on social media.</p>
+</section>
+
+<footer>
+  &copy; 2026 Unique Portfolio
+</footer>
+
+<!-- ===== Login Modal ===== -->
+<div class="modal" id="loginModal">
+  <div class="modal-content">
+    <span class="close" id="closeModal">&times;</span>
+    <h2>Premium Login</h2>
+    <label for="username">Username</label>
+    <input type="text" id="username" placeholder="Enter username">
+    <label for="password">Password</label>
+    <input type="password" id="password" placeholder="Enter password">
+    <button class="btn" id="loginBtn">Login</button>
+    <a href="#">Forgot Password?</a>
+  </div>
+</div>
+
+<script>
+  // Dark/Light Mode
+  const toggle = document.getElementById('darkModeToggle');
+  toggle.addEventListener('change', () => {
+    document.body.classList.toggle('light-mode', toggle.checked);
+  });
+
+  // Login Modal
+  const logo = document.getElementById('logo');
+  const modal = document.getElementById('loginModal');
+  const closeModal = document.getElementById('closeModal');
+
+  logo.addEventListener('click', () => modal.style.display = 'flex');
+  closeModal.addEventListener('click', () => modal.style.display = 'none');
+  window.addEventListener('click', e => { if(e.target === modal) modal.style.display = 'none'; });
+
+  // Simple Login Button (demo)
+  const loginBtn = document.getElementById('loginBtn');
+  loginBtn.addEventListener('click', () => {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    if(username && password) alert(`Welcome, ${username}!`);
+    else alert('Please enter username and password');
+  });
+</script>
+
+</body>
+</html>

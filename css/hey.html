@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enhanced Colored Redux Counter</title>
+  <script src="https://cdn.jsdelivr.net/npm/@reduxjs/toolkit@1.9.5/dist/redux-toolkit.umd.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 50px;
+      background: #f0f0f0;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin: 20px;
+      min-width: 150px;
+    }
+    .counter {
+      font-size: 48px;
+      margin: 20px 0;
+      font-weight: bold;
+    }
+    button, select {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h1>Colored Counter App</h1>
+    <label for="step">Step:</label>
+    <select id="step">
+      <option value="1">1</option>
+      <option value="5">5</option>
+      <option value="10">10</option>
+    </select>
+    <div id="counters"></div>
+    <button id="resetAll">Reset All</button>
+  </div>
+
+  <script>
+    const { configureStore, createSlice } = window.RTK;
+
+    // Load/save state from localStorage
+    function loadState() {
+      const saved = localStorage.getItem('counters');
+      return saved ? JSON.parse(saved) : { counters: [0, 0, 0] };
+    }
+    function saveState(state) {
+      localStorage.setItem('counters', JSON.stringify(state));
+    }
+
+    // Redux slice
+    const counterSlice = createSlice({
+      name: 'counter',
+      initialState: loadState(),
+      reducers: {
+        increment: (state, action) => {
+          state.counters[action.payload.index] += action.payload.step;
+        },
+        decrement: (state, action) => {
+          state.counters[action.payload.index] -= action.payload.step;
+        },
+        resetAll: (state) => {
+          state.counters = state.counters.map(_ => 0);
+        }
+      }
+    });
+
+    const { increment, decrement, resetAll } = counterSlice.actions;
+    const store = configureStore({ reducer: { counter: counterSlice.reducer } });
+
+    // DOM elements
+    const countersDiv = document.getElementById('counters');
+    const stepSelect = document.getElementById('step');
+    const resetAllBtn = document.getElementById('resetAll');
+
+    function render() {
+      const state = store.getState();
+      countersDiv.innerHTML = '';
+
+      state.counter.counters.forEach((value, index) => {
+        const container = document.createElement('div');
+        container.className = 'container';
+
+        // Set color based on value
+        let color = 'black';
+        if (value > 0) color = 'green';
+        else if (value < 0) color = 'red';
+
+        container.innerHTML = `
+          <div class="counter" style="color:${color}">${value}</div>
+          <button class="inc">Increment</button>
+          <button class="dec">Decrement</button>
+        `;
+
+        countersDiv.appendChild(container);
+
+        container.querySelector('.inc').addEventListener('click', () => {
+          store.dispatch(increment({ index, step: Number(stepSelect.value) }));
+        });
+        container.querySelector('.dec').addEventListener('click', () => {
+          store.dispatch(decrement({ index, step: Number(stepSelect.value) }));
+        });
+      });
+
+      saveState(state.counter); // persist to localStorage
+    }
+
+    store.subscribe(render);
+    render();
+
+    resetAllBtn.addEventListener('click', () => store.dispatch(resetAll()));
+  </script>
+</body>
+</html>
