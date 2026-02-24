@@ -42,31 +42,35 @@
 // }
 
 // export default Products
-
-
 import React, { useState } from 'react'
 import Heading from '../Heading/Heading'
 import ProductList from '../ProductList/ProductList'
 import Cards from '../Cards/Cards'
-import Button from '../Button/Button'
+import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 const Products = () => {
-
     const categories = [
         'All', 'Fruits', 'Vegetables', 'Dairy', 'SeaFood'
     ]
 
     const [activeTab, setActiveTab] = useState('All')
 
-  let filteredItems = activeTab === 'All' ? ProductList : ProductList.filter(item=>item.category === activeTab)
+    let filteredItems = activeTab === 'All' ? ProductList : ProductList.filter(item => item.category === activeTab)
+
     const renderCards = filteredItems.slice(0).map((product, index) => {
         return (
-            <Cards
-                key={product.id || index}   
-                image={product.image}
-                name={product.name}
-                price={product.price}
-            />
+            <motion.div
+                key={product.id || index}
+                whileHover={{ scale: 1.05, boxShadow: '0px 10px 20px rgba(0,0,0,0.1)' }}
+                transition={{ duration: 0.3 }}
+            >
+                <Cards
+                    image={product.image}
+                    name={product.name}
+                    price={product.price}
+                />
+            </motion.div>
         )
     })
 
@@ -76,7 +80,7 @@ const Products = () => {
                 <Heading highlight='Our' heading='Products' />
 
                 {/* Tabs */}
-                <div className='flex gap-3 justify-center mt-10'>
+                <div className='flex flex-wrap gap-3 justify-center mt-10'>
                     {categories.map(category => {
                         return (
                             <button
@@ -93,16 +97,19 @@ const Products = () => {
                     })}
                 </div>
 
-                {/* Product Listing */}
-                <div className='grid grid-cols-4 gap-9 mt-20'>
+                {/* Product Listing with hover animations */}
+                <div className='grid grid-cols-1 md:grid-cols-4 gap-9 mt-20'>
                     {renderCards}
                 </div>
 
                 <div className='mt-15 mx-auto w-fit'>
-                    <Button content='View All' />
+                    <Link to='/allproducts' className='bg-gradient-to-b from-orange-400 to-orange-500
+                    text-white px-8 py-3 rounded-lg md:text-lg text-md hover:scale-105 hover:to-orange-600
+                    transition-all duration-300 cursor-pointer '>
+                        View all
+                    </Link>
                 </div>
             </div>
-
         </section>
     )
 }
