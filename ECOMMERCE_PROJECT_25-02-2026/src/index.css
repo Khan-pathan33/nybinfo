@@ -1,1 +1,7 @@
 @import "tailwindcss";
+
+/* for scroll bar hidden i have to write scroll in cart tailwind  */
+
+.scroll::-webkit-scrollbar{
+    display:none
+}

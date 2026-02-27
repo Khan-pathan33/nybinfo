@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ProductList from "./ProductList";
 import { GoHeartFill } from "react-icons/go";
 
-const Product = ({searchTerm}) => {
+const Product = ({searchTerm, addToCart}) => {
   const categories = [ "All", "Mens", "Womens", "Kids", "New Arrivals", "On Sale",
   ];
 
@@ -68,7 +68,8 @@ const matchesSearch = item.name.toLocaleLowerCase().includes(searchTerm.toLocale
             {/* tofixed(2) for 2 digit number like 20.00 not jst 20 */}
             <span className="text-red-600 font-semibold text-lg">${product.price.toFixed(2)}</span>
           </div>
-          <button className="bg-blue-600 text-white text-lg py-3 w-full rounded-lg cursor-pointer active:bg-blue-700">Add to Cart</button>
+          <button className="bg-blue-600 text-white text-lg py-3 w-full rounded-lg cursor-pointer active:bg-blue-700"onClick={()=>addToCart(product)}>
+            Add to Cart</button>
         </div>
       </div>
     );
