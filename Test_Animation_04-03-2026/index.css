@@ -1,0 +1,31 @@
+@font-face{
+    font-family: Melodrama ;
+    src: url(assets/Melodrama-Semibold.woff)
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+.scroll-section{
+    background: #faeed3;
+    height: 150vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.scroll-text{
+    font-size: 10rem;
+    text-align: center;
+    text-transform: uppercase;
+    color: #1e1005;
+    max-width: 80%;
+    font-family: Melodrama ;
+}
+.text-hidden{
+    visibility: hidden;
+    opacity: 0;
+}

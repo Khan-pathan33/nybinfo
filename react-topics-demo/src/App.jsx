@@ -338,3 +338,251 @@ function App() {
 }
 
 export default App;
+
+
+
+
+// // src/App.jsx
+// import React from "react";
+// import "./index.css";
+
+// export default function App() {
+//   return (
+//     <div className="flex h-screen bg-gray-100">
+//       {/* Sidebar */}
+//       <div className="w-64 bg-gray-800 text-white flex flex-col">
+//         <h1 className="text-2xl font-bold p-4">Admin</h1>
+//         <ul className="flex flex-col mt-4">
+//           <li className="p-4 hover:bg-gray-700 cursor-pointer">Dashboard</li>
+//           <li className="p-4 hover:bg-gray-700 cursor-pointer">Users</li>
+//           <li className="p-4 hover:bg-gray-700 cursor-pointer">Settings</li>
+//         </ul>
+//       </div>
+
+//       {/* Main Content */}
+//       <div className="flex-1 p-8 overflow-auto">
+//         <h1 className="text-3xl font-bold mb-6">Dashboard</h1>
+
+//         {/* Cards */}
+//         <div className="grid grid-cols-3 gap-6 mb-6">
+//           <div className="p-6 bg-white shadow rounded">Card 1</div>
+//           <div className="p-6 bg-white shadow rounded">Card 2</div>
+//           <div className="p-6 bg-white shadow rounded">Card 3</div>
+//         </div>
+
+//         {/* Users Table */}
+//         <div className="bg-white shadow rounded p-6">
+//           <h2 className="text-xl font-semibold mb-4">Users</h2>
+//           <table className="min-w-full table-auto">
+//             <thead>
+//               <tr className="bg-gray-200">
+//                 <th className="px-4 py-2 text-left">Name</th>
+//                 <th className="px-4 py-2 text-left">Email</th>
+//                 <th className="px-4 py-2 text-left">Role</th>
+//               </tr>
+//             </thead>
+//             <tbody>
+//               <tr className="border-b">
+//                 <td className="px-4 py-2">Rehan</td>
+//                 <td className="px-4 py-2">rehan@example.com</td>
+//                 <td className="px-4 py-2">Admin</td>
+//               </tr>
+//               <tr className="border-b">
+//                 <td className="px-4 py-2">Rahul</td>
+//                 <td className="px-4 py-2">rahul@example.com</td>
+//                 <td className="px-4 py-2">Editor</td>
+//               </tr>
+//               <tr>
+//                 <td className="px-4 py-2">Vihan</td>
+//                 <td className="px-4 py-2">vihan@example.com</td>
+//                 <td className="px-4 py-2">Viewer</td>
+//               </tr>
+//             </tbody>
+//           </table>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
+
+
+// // src/App.jsx
+// import React from "react";
+// import { FiHome, FiUsers, FiSettings, FiBell, FiSearch } from "react-icons/fi";
+// import "./index.css";
+
+// export default function App() {
+//   return (
+//     <div className="flex h-screen bg-gray-100">
+//       {/* Sidebar */}
+//       <div className="w-64 bg-gray-800 text-white flex flex-col">
+//         <h1 className="text-2xl font-bold p-4 border-b border-gray-700">Admin</h1>
+//         <ul className="flex flex-col mt-4">
+//           <li className="flex items-center p-4 hover:bg-gray-700 cursor-pointer">
+//             <FiHome className="mr-2" /> Dashboard
+//           </li>
+//           <li className="flex items-center p-4 hover:bg-gray-700 cursor-pointer">
+//             <FiUsers className="mr-2" /> Users
+//           </li>
+//           <li className="flex items-center p-4 hover:bg-gray-700 cursor-pointer">
+//             <FiSettings className="mr-2" /> Settings
+//           </li>
+//         </ul>
+//       </div>
+
+//       {/* Main Content */}
+//       <div className="flex-1 flex flex-col overflow-auto">
+//         {/* Topbar */}
+//         <div className="flex justify-between items-center bg-white shadow p-4">
+//           <div className="flex items-center space-x-4">
+//             <FiSearch className="text-gray-500" />
+//             <input
+//               type="text"
+//               placeholder="Search..."
+//               className="border rounded px-2 py-1 focus:outline-none focus:ring focus:border-blue-300"
+//             />
+//           </div>
+//           <div className="flex items-center space-x-4">
+//             <FiBell className="text-gray-500 text-xl cursor-pointer" />
+//             <div className="bg-gray-200 rounded-full w-8 h-8 flex items-center justify-center cursor-pointer">
+//               A
+//             </div>
+//           </div>
+//         </div>
+
+//         {/* Main Dashboard */}
+//         <div className="p-8">
+//           <h1 className="text-3xl font-bold mb-6">Dashboard</h1>
+
+//           {/* Stats Cards */}
+//           <div className="grid grid-cols-4 gap-6 mb-6">
+//             <div className="p-6 bg-white shadow rounded">Total Users: 120</div>
+//             <div className="p-6 bg-white shadow rounded">Active Sessions: 45</div>
+//             <div className="p-6 bg-white shadow rounded">Revenue: $5,200</div>
+//             <div className="p-6 bg-white shadow rounded">Tasks Pending: 8</div>
+//           </div>
+
+//           {/* Charts Placeholder */}
+//           <div className="grid grid-cols-2 gap-6 mb-6">
+//             <div className="p-6 bg-white shadow rounded h-64 flex items-center justify-center">
+//               Line Chart Placeholder
+//             </div>
+//             <div className="p-6 bg-white shadow rounded h-64 flex items-center justify-center">
+//               Pie Chart Placeholder
+//             </div>
+//           </div>
+
+//           {/* Quick Actions */}
+//           <div className="flex space-x-4 mb-6">
+//             <button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+//               Add User
+//             </button>
+//             <button className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">
+//               Export Data
+//             </button>
+//             <button className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600">
+//               Settings
+//             </button>
+//           </div>
+
+//           {/* Users Table */}
+//           <div className="bg-white shadow rounded p-6">
+//             <h2 className="text-xl font-semibold mb-4">Users</h2>
+//             <table className="min-w-full table-auto">
+//               <thead>
+//                 <tr className="bg-gray-200">
+//                   <th className="px-4 py-2 text-left">Name</th>
+//                   <th className="px-4 py-2 text-left">Email</th>
+//                   <th className="px-4 py-2 text-left">Role</th>
+//                 </tr>
+//               </thead>
+//               <tbody>
+//                 <tr className="border-b">
+//                   <td className="px-4 py-2">Alice</td>
+//                   <td className="px-4 py-2">alice@example.com</td>
+//                   <td className="px-4 py-2">Admin</td>
+//                 </tr>
+//                 <tr className="border-b">
+//                   <td className="px-4 py-2">Bob</td>
+//                   <td className="px-4 py-2">bob@example.com</td>
+//                   <td className="px-4 py-2">Editor</td>
+//                 </tr>
+//                 <tr>
+//                   <td className="px-4 py-2">Charlie</td>
+//                   <td className="px-4 py-2">charlie@example.com</td>
+//                   <td className="px-4 py-2">Viewer</td>
+//                 </tr>
+//               </tbody>
+//             </table>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
+
+
+
+
+// src/App.jsx
+import React from "react";
+import "./index.css";
+
+export default function App() {
+  return (
+    <div className="flex h-screen bg-gray-100">
+      {/* Sidebar */}
+      {/* <div className="w-64 bg-gray-800 text-white flex flex-col">
+        <h1 className="text-2xl font-bold p-4">Admin</h1>
+        <ul className="flex flex-col mt-4">
+          <li className="p-4 hover:bg-gray-700 cursor-pointer">Dashboard</li>
+          <li className="p-4 hover:bg-gray-700 cursor-pointer">Users</li>
+          <li className="p-4 hover:bg-gray-700 cursor-pointer">Settings</li>
+        </ul>
+      </div>
+
+      {/* Main Content */}
+      {/* <div className="flex-1 p-8 overflow-auto">
+        <h1 className="text-3xl font-bold mb-6">Dashboard</h1> */}
+
+        {/* Cards */}
+        {/* <div className="grid grid-cols-3 gap-6 mb-6">
+          <div className="p-6 bg-white shadow rounded">Card 1</div>
+          <div className="p-6 bg-white shadow rounded">Card 2</div>
+          <div className="p-6 bg-white shadow rounded">Card 3</div>
+        </div> */}
+
+        {/* Users Table */}
+        {/* <div className="bg-white shadow rounded p-6">
+          <h2 className="text-xl font-semibold mb-4">Users</h2>
+          <table className="min-w-full table-auto">
+            <thead>
+              <tr className="bg-gray-200">
+                <th className="px-4 py-2 text-left">Name</th>
+                <th className="px-4 py-2 text-left">Email</th>
+                <th className="px-4 py-2 text-left">Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b">
+                <td className="px-4 py-2">Rehan</td>
+                <td className="px-4 py-2">rehan@example.com</td>
+                <td className="px-4 py-2">Admin</td>
+              </tr>
+              <tr className="border-b">
+                <td className="px-4 py-2">Rahul</td>
+                <td className="px-4 py-2">rahul@example.com</td>
+                <td className="px-4 py-2">Editor</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2">vihan</td>
+                <td className="px-4 py-2">vihan@example.com</td>
+                <td className="px-4 py-2">Viewer</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
+} */}
