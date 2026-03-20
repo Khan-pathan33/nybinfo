@@ -46,7 +46,7 @@
 
 //         window.addEventListener('scroll', changeNavbar);
 //       },[])
-// // save items to localstorage if we store as an array or object it doesnt store it store as an [object, object] by using json stringify we can store the cart
+// // save items to localstorage if we store as an array or object it doesnt store. it store as an [object, object] by using json stringify we can store the cart
 //       useEffect(()=>{
 //         localStorage.setItem('cart', JSON.stringify(cart))
 //         localStorage.setItem('wishlist', JSON.stringify(wishlist))
@@ -374,6 +374,7 @@ import Wishlist from '../Wishlist/Wishlist'
 import OrderSummary from '../OrderSummary/OrderSummary'
 import OrderPlace from '../OrderPlace/OrderPlace'
 import LandingPage from '../LandingPage/LandingPage'
+import ServiceListing from '../../pages/ServiceListing'
 
 const Home = () => {
   const navigate = useNavigate()
@@ -443,14 +444,27 @@ const Home = () => {
 
   return (
     <div>
-      <Navbar handleScroll={handleScroll} setSearchTerm={setSearchTerm} isScrolled={isScrolled} handlePanel={handlePanel} totalItems={totalItems} wishlist={wishlist} />
+      <Navbar handleScroll={handleScroll} setSearchTerm={setSearchTerm}
+       isScrolled={isScrolled} handlePanel={handlePanel} totalItems={totalItems}
+        wishlist={wishlist} />
       <Banner />
-      <Product searchTerm={searchTerm} addToCart={addToCart} addToWishlist={addToWishlist} wishlist={wishlist} />
-      <Cart activePanel={activePanel} handleClose={handleClose} cart={cart} removeItem={removeItem} quantityIncrement={quantityIncrement} quantityDecrement={quantityDecrement} subtotal={subtotal} shippingFee={shippingFee} orderTotal={orderTotal} setOrderSummary={setOrderSummary} />
-      <Wishlist activePanel={activePanel} handleClose={handleClose} wishlist={wishlist} addToCart={addToCart} clearWishlist={clearWishlist} />
-      {orderSummary && <OrderSummary cart={cart} subtotal={subtotal} shippingFee={shippingFee} orderTotal={orderTotal} setOrderPlaced={setOrderPlaced} setOrderSummary={setOrderSummary} setCart={setCart} />}
+      <Product searchTerm={searchTerm} addToCart={addToCart}
+       addToWishlist={addToWishlist} wishlist={wishlist} />
+      <Cart activePanel={activePanel} handleClose={handleClose}
+       cart={cart} removeItem={removeItem} quantityIncrement={quantityIncrement}
+        quantityDecrement={quantityDecrement} subtotal={subtotal} shippingFee={shippingFee}
+         orderTotal={orderTotal} setOrderSummary={setOrderSummary} />
+      <Wishlist activePanel={activePanel} handleClose={handleClose} 
+      wishlist={wishlist} addToCart={addToCart} clearWishlist={clearWishlist} />
+      {
+      orderSummary && <OrderSummary cart={cart} subtotal={subtotal} shippingFee={shippingFee}
+       orderTotal={orderTotal} setOrderPlaced={setOrderPlaced} setOrderSummary={setOrderSummary}
+        setCart={setCart} />
+        }
       {orderPlaced && <OrderPlace setOrderPlaced={setOrderPlaced} />}
       <LandingPage />
+       <ServiceListing />
+       
     </div>
   )
 }

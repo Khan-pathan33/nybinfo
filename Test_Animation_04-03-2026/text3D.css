@@ -1,0 +1,39 @@
+@font-face {
+    font-family: Italian Plate No2;
+    src: url("https://db.onlinewebfonts.com/t/5d295d4f742c23106860e0c94280f08a.woff")format("woff");
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Italian Plate No2;
+
+}
+
+body{
+    background: black;
+}
+
+.container,
+section{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+h2{
+    font-size: 2.5rem;
+    color: silver;
+}
+.rotate-text{
+    font-size: 6.5rem;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1;
+    opacity: 0;
+}
+.rotate-container{
+    perspective: 550px;
+}

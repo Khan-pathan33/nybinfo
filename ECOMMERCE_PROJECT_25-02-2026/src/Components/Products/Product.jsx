@@ -17,7 +17,7 @@
 //  (activeTab === item.category)
 
 
-//  // for searching purpos like tshirt ,dress etc
+//  // for searching purpose like tshirt ,dress etc
 
 // const matchesSearch = item.name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())
 

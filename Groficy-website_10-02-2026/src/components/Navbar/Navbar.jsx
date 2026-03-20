@@ -448,3 +448,139 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
+
+
+
+//vibely what are u planning for code
+// import Weddings from '..//..//../assets/whatAreYouPlanningForImage/Weddings.png'
+// import MiceEvents from '..//..//../assets/whatAreYouPlanningForImage/MiceEvents.png'
+// import DJNight from '..//..//../assets/whatAreYouPlanningForImage/DJNight.png'
+// import GetTogether from '..//..//../assets/whatAreYouPlanningForImage/GetTogether.png'
+// import Birthdays from '..//..//../assets/whatAreYouPlanningForImage/Birthdays.png'
+// import ThemeParties from '..//..//../assets/whatAreYouPlanningForImage/ThemeParties.png'
+// import SocialEvents from '..//..//../assets/whatAreYouPlanningForImage/SocialEvents.png'
+
+// export default function EventPlanning() {
+//   const events = [
+//     {
+//       title: "Weddings",
+//       img: Weddings,
+//       w: "w-[502px]",
+//       h: "h-[384px]",
+//       top: "top-[4px]",
+//       left: "left-[0px]",
+//       rectangleColor: "bg-[#FFBB00]",
+//       rectangleHeight: "h-[16px]"
+//     },
+//     {
+//       title: "Mice / Corporate Events",
+//       img: MiceEvents,
+//       w: "w-[544px]",
+//       h: "h-[443px]",
+//       top: "top-[3px]",
+//       left: "left-[512px]",
+//       rectangleColor: "bg-[#D33E39]",
+//       rectangleHeight: "h-[34px]"
+//     },
+//     {
+//       title: "Concerts / DJ Nights",
+//       img: DJNight,
+//       w: "w-[556px]",
+//       h: "h-[323px]",
+//       top: "top-[0px]",
+//       left: "left-[1065px]",
+//       rectangleColor: null,
+//       rectangleHeight: null
+//     },
+//     {
+//       title: "Family / Get Togethers",
+//       img: GetTogether,
+//       w: "w-[502px]",
+//       h: "h-[366px]",
+//       top: "top-[417px]",
+//       left: "left-[1px]",
+//       rectangleColor: null,
+//       rectangleHeight: null
+//     },
+//     {
+//       title: "Birthdays / Anniversaries",
+//       img: Birthdays,
+//       w: "w-[545px]",
+//       h: "h-[286px]",
+//       top: "top-[497px]",
+//       left: "left-[512px]",
+//       rectangleColor: null,
+//       rectangleHeight: null
+//     },
+//     {
+//       title: "Theme Parties",
+//       img: ThemeParties,
+//       w: "w-[274px]",
+//       h: "h-[400px]",
+//       top: "top-[382px]",
+//       left: "left-[1066px]",
+//       rectangleColor: null,
+//       rectangleHeight: null
+//     },
+//     {
+//       title: "Social Events",
+//       img: SocialEvents,
+//       w: "w-[273px]",
+//       h: "h-[456px]",
+//       top: "top-[327px]",
+//       left: "left-[1350px]",
+//       rectangleColor: null,
+//       rectangleHeight: null
+//     }
+//   ];
+
+//   return (
+//     <div className="min-h-screen bg-gradient-to-br from-[#26273A] to-[#000000] relative pt-[120px]">
+
+//       {/* Centered Heading */}
+//       <div className="w-full flex justify-center items-center  mb-10">
+//         <h2 className="text-white font-poppins font-medium text-[34px] leading-[44px] text-center">
+//           What Are You Planning For ?
+//         </h2>
+//       </div>
+
+//       {events.map(
+//         ({ title, img, w, h, top, left, rectangleColor, rectangleHeight }, index) => (
+//           <div key={index} className={`absolute ${top} ${left} flex flex-col items-start`}>
+            
+//             <div className={`relative rounded-lg overflow-hidden shadow-lg group ${w} ${h}`}>
+//               <img
+//                 src={img}
+//                 alt={title}
+//                 className="w-full h-full object-cover brightness-75 group-hover:brightness-90 transition"
+//                 loading="lazy"
+//               />
+
+//               <div className="absolute bottom-6 left-4 font-semibold drop-shadow-lg text-[#E3E3E3] text-base">
+//                 • {title}
+//               </div>
+//             </div>
+
+//             {rectangleColor && rectangleHeight && (
+//               <div className={`mt-1 ${w} ${rectangleHeight} ${rectangleColor}`} />
+//             )}
+//           </div>
+//         )
+//       )}
+
+//       <div
+//         className="absolute"
+//         style={{
+//           width: "271.23687744140625px",
+//           height: "33.90460968017578px",
+//           top: "335.87px",
+//           left: "1066.93px",
+//           background: "#FFBB00",
+//           opacity: 1
+//         }}
+//       />
+//     </div>
+//   );
+// }
